@@ -12,6 +12,7 @@ const devUrl = process.env.DEV_URL;
 
 // Import Routes
 const amdRoutes = require("./routes/amdRoutes");
+const cloudRoutes = require("./routes/cloud/cloudRoutes");
 
 // Connect to database
 mongoose.connect(
@@ -42,6 +43,7 @@ app.get("/", (req, res) => {
   res.send(`this is the root api`);
 });
 app.use("/amd", amdRoutes);
+app.use("/cloud", cloudRoutes);
 
 // Port Listeners
 app.listen(port, (err) => {
