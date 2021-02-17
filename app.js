@@ -11,7 +11,7 @@ const port = process.env.PORT || 5000;
 const devUrl = process.env.DEV_URL;
 
 // Import Routes
-const amdRoutes = require("./routes/amdRoutes");
+const amdRoutes = require("./routes/amd/amdRoutes");
 const cloudRoutes = require("./routes/cloud/cloudRoutes");
 
 // Connect to database
