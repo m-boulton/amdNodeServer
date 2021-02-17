@@ -1,77 +1,79 @@
-[
-    {
-        "title": "5600X",
-        "spec": {
-            "Model Number": "Ryzen™ 5 5600X",
-            "Number of Cores": 6,
-            "Number of Threads": 12,
-            "Base Clock": "3.7 Ghz",
-            "Max Boost Clock": "4.6 Ghz",
-            "L1 Cache": "",
-            "L2 Cache": "34 MB",
-            "L3 Cache": "32 MB",
-            "Unlocked": "Yes",
-            "Memory Speed": "",
-            "Memory Type": "",
-            "Memory Channels": "",
-            "Graphics": "",
-            "PCI Express Version": "",
-            "Supported Technologies": [],
-            "Thermal Solution": "",
-            "TDP": "",
-            "Max Temperature": "",
-            "Process Technology": "",
-            "Packaging": ""
+{
+    "specs": [
+        {
+            "title": "5600X",
+            "spec": {
+                "Model Number": "Ryzen™ 5 5600X",
+                "Number of Cores": 6,
+                "Number of Threads": 12,
+                "Base Clock": "3.7 Ghz",
+                "Max Boost Clock": "4.6 Ghz",
+                "L1 Cache": "",
+                "L2 Cache": "34 MB",
+                "L3 Cache": "32 MB",
+                "Unlocked": "Yes",
+                "Memory Speed": "",
+                "Memory Type": "",
+                "Memory Channels": "",
+                "Graphics": "",
+                "PCI Express Version": "",
+                "Supported Technologies": [],
+                "Thermal Solution": "",
+                "TDP": "",
+                "Max Temperature": "",
+                "Process Technology": "",
+                "Packaging": ""
+            }
+        },
+        {
+            "title": "5700X",
+            "spec": {
+                "Model Number": "Ryzen™ 5 5600X",
+                "Number of Cores": 6,
+                "Number of Threads": 12,
+                "Base Clock": "3.7 Ghz",
+                "Max Boost Clock": "4.6 Ghz",
+                "L1 Cache": "",
+                "L2 Cache": "34 MB",
+                "L3 Cache": "32 MB",
+                "Unlocked": "Yes",
+                "Memory Speed": "",
+                "Memory Type": "",
+                "Memory Channels": "",
+                "Graphics": "",
+                "PCI Express Version": "",
+                "Supported Technologies": [],
+                "Thermal Solution": "",
+                "TDP": "",
+                "Max Temperature": "",
+                "Process Technology": "",
+                "Packaging": ""
+            }
+        },
+        {
+            "title": "5800X",
+            "spec": {
+                "Model Number": "Ryzen™ 5 5600X",
+                "Number of Cores": 6,
+                "Number of Threads": 12,
+                "Base Clock": "3.7 Ghz",
+                "Max Boost Clock": "4.6 Ghz",
+                "L1 Cache": "",
+                "L2 Cache": "34 MB",
+                "L3 Cache": "32 MB",
+                "Unlocked": "Yes",
+                "Memory Speed": "",
+                "Memory Type": "",
+                "Memory Channels": "",
+                "Graphics": "",
+                "PCI Express Version": "",
+                "Supported Technologies": [],
+                "Thermal Solution": "",
+                "TDP": "",
+                "Max Temperature": "",
+                "Process Technology": "",
+                "Packaging": ""
+            }
         }
-    },
-    {
-        "title": "5700X",
-        "spec": {
-            "Model Number": "Ryzen™ 5 5600X",
-            "Number of Cores": 6,
-            "Number of Threads": 12,
-            "Base Clock": "3.7 Ghz",
-            "Max Boost Clock": "4.6 Ghz",
-            "L1 Cache": "",
-            "L2 Cache": "34 MB",
-            "L3 Cache": "32 MB",
-            "Unlocked": "Yes",
-            "Memory Speed": "",
-            "Memory Type": "",
-            "Memory Channels": "",
-            "Graphics": "",
-            "PCI Express Version": "",
-            "Supported Technologies": [],
-            "Thermal Solution": "",
-            "TDP": "",
-            "Max Temperature": "",
-            "Process Technology": "",
-            "Packaging": ""
-        }
-    },
-    {
-        "title": "5800X",
-        "spec": {
-            "Model Number": "Ryzen™ 5 5600X",
-            "Number of Cores": 6,
-            "Number of Threads": 12,
-            "Base Clock": "3.7 Ghz",
-            "Max Boost Clock": "4.6 Ghz",
-            "L1 Cache": "",
-            "L2 Cache": "34 MB",
-            "L3 Cache": "32 MB",
-            "Unlocked": "Yes",
-            "Memory Speed": "",
-            "Memory Type": "",
-            "Memory Channels": "",
-            "Graphics": "",
-            "PCI Express Version": "",
-            "Supported Technologies": [],
-            "Thermal Solution": "",
-            "TDP": "",
-            "Max Temperature": "",
-            "Process Technology": "",
-            "Packaging": ""
-        }
-    }
-]
+    ]
+}

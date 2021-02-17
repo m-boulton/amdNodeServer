@@ -43,7 +43,7 @@ app.get("/", (req, res) => {
   res.send(`this is the root api`);
 });
 app.use("/amd", amdRoutes);
-app.use("/cloud", cloudRoutes);
+// app.use("/cloud", cloudRoutes);
 
 // Port Listeners
 app.listen(port, (err) => {

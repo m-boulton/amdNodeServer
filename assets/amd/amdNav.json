@@ -1,100 +1,106 @@
-[
-    {
-        "link": "/index.html",
-        "title": "Home",
-        "navigationInclude": "false",
-        "content": {
-            "overview-title": "",
-            "overview-paragraph": "",
-            "overview-image": ""
-        }
-    },
-    {
-        "link": "null",
-        "title": "Processors",
-        "class": "",
-        "navigationInclude": "true",
-        "list": [
-            {
-                "link": "/product.html?p=ryzen",
-                "title": "Ryzen",
-                "class": ""
-            },
-            {
-                "link": "/product.html?p=threadripper",
-                "title": "Threadripper",
-                "class": ""
-            },
-            {
-                "link": "/product.html?p=ryzen-graphics",
-                "title": "Ryzen with Graphics",
-                "class": ""
-            },
-            {
-                "link": "/product.html?p=athlon",
-                "title": "Athlon",
-                "class": ""
-            },
-            {
-                "link": "/product.html?p=ryzen-pro",
-                "title": "Ryzen Pro",
-                "class": ""
-            },
-            {
-                "link": "/product.html?p=athlon-pro",
-                "title": "Athlon Pro",
-                "class": ""
+{
+    "nav-list": [
+        {
+            "link": "/index.html",
+            "title": "Home",
+            "navigationInclude": "false",
+            "content": {
+                "overview-header": "",
+                "overview-paragraph": "",
+                "overview-image": ""
             }
-        ]
-    },
-    {
-        "link": "null",
-        "title": "Graphics",
-        "class": "",
-        "navigationInclude": "true",
-        "list": [
-            {
-                "link": "/product.html?p=rx-6000",
-                "title": "Radeon RX 6000 Series",
-                "class": ""
-            },
-            {
-                "link": "/product.html?p=rx-5000",
-                "title": "Radeon RX 5000 Series",
-                "class": ""
-            },
-            {
-                "link": "/product.html?p=rx-vega",
-                "title": "Radeon RX Vega Series",
-                "class": ""
-            },
-            {
-                "link": "/product.html?p=rx-500",
-                "title": "Radeon RX 500 Series",
-                "class": ""
+        },
+        {
+            "link": "null",
+            "title": "Processors",
+            "class": "",
+            "child-class": "",
+            "onclick": "",
+            "navigationInclude": "true",
+            "list": [
+                {
+                    "link": "/product.html?p=ryzen",
+                    "title": "Ryzen",
+                    "class": ""
+                },
+                {
+                    "link": "/product.html?p=threadripper",
+                    "title": "Threadripper",
+                    "class": ""
+                },
+                {
+                    "link": "/product.html?p=ryzen-graphics",
+                    "title": "Ryzen with Graphics",
+                    "class": ""
+                },
+                {
+                    "link": "/product.html?p=athlon",
+                    "title": "Athlon",
+                    "class": ""
+                },
+                {
+                    "link": "/product.html?p=ryzen-pro",
+                    "title": "Ryzen Pro",
+                    "class": ""
+                },
+                {
+                    "link": "/product.html?p=athlon-pro",
+                    "title": "Athlon Pro",
+                    "class": ""
+                }
+            ]
+        },
+        {
+            "link": "null",
+            "title": "Graphics",
+            "class": "",
+            "child-class": "",
+            "onclick": "",
+            "navigationInclude": "true",
+            "list": [
+                {
+                    "link": "/product.html?p=rx-6000",
+                    "title": "Radeon RX 6000 Series",
+                    "class": ""
+                },
+                {
+                    "link": "/product.html?p=rx-5000",
+                    "title": "Radeon RX 5000 Series",
+                    "class": ""
+                },
+                {
+                    "link": "/product.html?p=rx-vega",
+                    "title": "Radeon RX Vega Series",
+                    "class": ""
+                },
+                {
+                    "link": "/product.html?p=rx-500",
+                    "title": "Radeon RX 500 Series",
+                    "class": ""
+                }
+            ]
+        },
+        {
+            "link": "/product.html?p=about",
+            "title": "About Us",
+            "class": "",
+            "navigationInclude": "true",
+            "content": {
+                "overview-header": "",
+                "overview-paragraph": "",
+                "overview-image": ""
             }
-        ]
-    },
-    {
-        "link": "/product.html?p=about",
-        "title": "About Us",
-        "class": "",
-        "navigationInclude": "true",
-        "content": {
-            "overview-title": "",
-            "overview-paragraph": "",
-            "overview-image": ""
+        },
+        {
+            "link": "/product.html?p=contact",
+            "title": "Contact Us",
+            "class": "",
+            "navigationInclude": "true",
+            "content": {
+                "overview-header": "",
+                "overview-paragraph": "",
+                "overview-image": ""
+            }
         }
-    },
-    {
-        "link": "/product.html?p=contact",
-        "title": "Contact Us",
-        "class": "",
-        "navigationInclude": "true",
-        "content": {
-            "overview-title": "",
-            "overview-paragraph": "",
-            "overview-image": ""
-        }
-    }
-]
+    ]
+}
