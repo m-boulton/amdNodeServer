@@ -7,7 +7,7 @@ require("dotenv/config");
 // DotEnv Variables
 const hostname = process.env.HOST;
 const amdDatabase = process.env.AMD_DB_CONNECT;
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3500;
 const devUrl = process.env.DEV_URL;
 
 // Import Routes
