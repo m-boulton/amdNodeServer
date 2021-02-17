@@ -5,7 +5,9 @@ const mongoose = require("mongoose");
 require("dotenv/config");
 
 // DotEnv Variables
-const amdDatabase = process.env.AMD_DB_CONNECT;
+const amdDatabase =
+  process.env.AMD_DB_CONNECT ||
+  "mongodb+srv://projectAmdUser:yap4ixw@clusteramd.rbltx.mongodb.net/AmdDB?retryWrites=true&w=majority";
 const port = process.env.PORT || 3500;
 const devUrl = process.env.DEV_URL;
 
