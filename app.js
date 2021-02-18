@@ -15,7 +15,7 @@ const cloudRoutes = require("./routes/cloud/cloudRoutes");
 
 // Connect to database
 mongoose.connect(
-  amdDatabase,
+  "mongodb+srv://projectAmdUser:yap4ixw@clusteramd.rbltx.mongodb.net/AmdDB?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useCreateIndex: true,
