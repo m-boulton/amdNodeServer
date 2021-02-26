@@ -15,7 +15,7 @@ const { AMD_DB_CONNECT: amdDatabase, DEV_URL: devUrl } = process.env;
 const port = process.env.PORT || 5000;
 
 // Import Routes
-const amdRoutes = require("./routes/amdRoutes");
+const amdRoutes = require("./routes/amd/amdRoutes");
 // const cloudRoutes = require("./routes/cloud/cloudRoutes");
 
 // Connect to database

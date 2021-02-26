@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const AmdNav = require("../models/amd/amdModelNav");
-const AmdContent = require("../models/amd/amdModelContent");
-const AmdSpec = require("../models/amd/amdModelSpec");
+const AmdNav = require("../../models/amd/amdModelNav");
+const AmdContent = require("../../models/amd/amdModelContent");
+const AmdSpec = require("../../models/amd/amdModelSpec");
 // const amdFunc = require("../functions/amdFunctions");
 
 // Routing for amd nav data -------------------------------------------------- Nav Routing
