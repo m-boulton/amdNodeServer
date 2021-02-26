@@ -2,17 +2,21 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-require("dotenv/config");
+if (process.env.NODE_ENV) {
+  require("dotenv").config({
+    path: `/var/www/env/.env.${process.env.NODE_ENV}`,
+  });
+} else {
+  require("dotenv").config();
+}
 
 // DotEnv Variables
-const hostname = process.env.HOST;
-const amdDatabase = process.env.AMD_DB_CONNECT;
+const { AMD_DB_CONNECT: amdDatabase, DEV_URL: devUrl } = process.env;
 const port = process.env.PORT || 5000;
-const devUrl = process.env.DEV_URL;
 
 // Import Routes
 const amdRoutes = require("./routes/amd/amdRoutes");
-const cloudRoutes = require("./routes/cloud/cloudRoutes");
+// const cloudRoutes = require("./routes/cloud/cloudRoutes");
 
 // Connect to database
 mongoose.connect(
@@ -43,7 +47,7 @@ app.get("/", (req, res) => {
   res.send(`this is the root api`);
 });
 app.use("/amd", amdRoutes);
-app.use("/cloud", cloudRoutes);
+// app.use("/cloud", cloudRoutes);
 
 // Port Listeners
 app.listen(port, (err) => {

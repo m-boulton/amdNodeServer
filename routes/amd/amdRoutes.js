@@ -3,13 +3,15 @@ const router = express.Router();
 const AmdNav = require("../../models/amd/amdModelNav");
 const AmdContent = require("../../models/amd/amdModelContent");
 const AmdSpec = require("../../models/amd/amdModelSpec");
-const amdFunc = require("../../functions/amdFunctions");
+// const amdFunc = require("../functions/amdFunctions");
 
 // Routing for amd nav data -------------------------------------------------- Nav Routing
+
 router
   .route("/nav")
 
   // get request for amd nav data
+
   .get(async (req, res) => {
     try {
       const posts = await AmdNav.find();
@@ -21,6 +23,7 @@ router
   })
 
   // posts made to amd nav database
+
   .post(async (req, res) => {
     const post = new AmdNav({
       title: req.body.title,
@@ -40,6 +43,7 @@ router
   })
 
   // updates to amd nav data on database
+
   .put(async (req, res) => {
     const updatedPost = new AmdNav({
       title: req.body.title,
@@ -59,10 +63,12 @@ router
   });
 
 // Routing for amd content data ----------------------------------------------- Content Routing
+
 router
   .route("/content")
 
   // get request for amd content data
+
   .get(async (req, res) => {
     try {
       const posts = await AmdContent.find();
@@ -74,6 +80,7 @@ router
   })
 
   // posts made to amd content database
+
   .post(async (req, res) => {
     const post = new AmdContent({
       title: req.body.title,
@@ -93,6 +100,7 @@ router
   })
 
   // updates to amd content data on database
+
   .put(async (req, res) => {
     const updatedPost = new AmdContent({
       title: req.body.title,
@@ -112,10 +120,12 @@ router
   });
 
 // Routing for amd spec data ------------------------------------------------- Spec Routing
+
 router
   .route("/spec")
 
   // get request for amd spec data
+
   .get(async (req, res) => {
     try {
       const posts = await AmdSpec.find();
@@ -127,6 +137,7 @@ router
   })
 
   // posts made to amd spec database
+
   .post(async (req, res) => {
     const post = new AmdSpec({
       title: req.body.title,
@@ -146,6 +157,7 @@ router
   })
 
   // updates to amd spec data on database
+
   .put(async (req, res) => {
     const updatedPost = new AmdSpec({
       title: req.body.title,
