@@ -11,14 +11,8 @@ if (process.env.NODE_ENV) {
 }
 
 // DotEnv Variables
-<<<<<<< HEAD
 const { AMD_DB_CONNECT: amdDatabase, DEV_URL: devUrl } = process.env;
 const port = process.env.PORT || 5000;
-=======
-const amdDatabase = process.env.AMD_DB_CONNECT;
-const port = process.env.PORT || 3500;
-const devUrl = process.env.DEV_URL;
->>>>>>> 730a59c066fcf1e5504a0e4a10c18a58ad3b361a
 
 // Import Routes
 const amdRoutes = require("./routes/amd/amdRoutes");
@@ -26,7 +20,7 @@ const amdRoutes = require("./routes/amd/amdRoutes");
 
 // Connect to database
 mongoose.connect(
-  "mongodb+srv://projectAmdUser:yap4ixw@clusteramd.rbltx.mongodb.net/AmdDB?retryWrites=true&w=majority",
+  amdDatabase,
   {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -62,4 +56,3 @@ app.listen(port, (err) => {
   }
   console.log(`listening on port ${port}`);
 });
-// test 9

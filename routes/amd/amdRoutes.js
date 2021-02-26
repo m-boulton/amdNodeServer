@@ -140,12 +140,13 @@ router
 
   .post(async (req, res) => {
     const post = new AmdSpec({
-      specs: req.body.specs,
+      title: req.body.title,
+      spec: req.body.spec,
     });
     try {
       const savedPost = await post.save();
       res.json(savedPost);
-      console.log(`posted to spec DB with ${savedPost}`);
+      console.log(`posted to spec DB with ${req.body.title}`);
     } catch (err) {
       res.json({
         type: "there was an error",
