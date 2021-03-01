@@ -4,9 +4,9 @@
         "title": "Ryzen",
         "content": {
             "overview": {
-                "overview-header": "",
-                "overview-paragraph": "",
-                "overview-image": ""
+                "overviewHeader": "",
+                "overviewParagraph": "",
+                "overviewImage": ""
             },
             "features": [
                 {
@@ -37,9 +37,9 @@
         "title": "Threadripper",
         "content": {
             "overview": {
-                "overview-header": "",
-                "overview-paragraph": "",
-                "overview-image": ""
+                "overviewHeader": "",
+                "overviewParagraph": "",
+                "overviewImage": ""
             },
             "features": [
                 {
@@ -69,9 +69,9 @@
         "title": "Ryzen with Graphics",
         "content": {
             "overview": {
-                "overview-header": "",
-                "overview-paragraph": "",
-                "overview-image": ""
+                "overviewHeader": "",
+                "overviewParagraph": "",
+                "overviewImage": ""
             },
             "features": [
                 {
@@ -101,9 +101,9 @@
         "title": "Athlon",
         "content": {
             "overview": {
-                "overview-header": "",
-                "overview-paragraph": "",
-                "overview-image": ""
+                "overviewHeader": "",
+                "overviewParagraph": "",
+                "overviewImage": ""
             },
             "features": [
                 {
@@ -133,9 +133,9 @@
         "title": "Ryzen Pro",
         "content": {
             "overview": {
-                "overview-header": "",
-                "overview-paragraph": "",
-                "overview-image": ""
+                "overviewHeader": "",
+                "overviewParagraph": "",
+                "overviewImage": ""
             },
             "features": [
                 {
@@ -165,9 +165,9 @@
         "title": "Athlon Pro",
         "content": {
             "overview": {
-                "overview-header": "",
-                "overview-paragraph": "",
-                "overview-image": ""
+                "overviewHeader": "",
+                "overviewParagraph": "",
+                "overviewImage": ""
             },
             "features": [
                 {
@@ -197,9 +197,9 @@
         "title": "Radeon RX 6000 Series",
         "content": {
             "overview": {
-                "overview-header": "",
-                "overview-paragraph": "",
-                "overview-image": ""
+                "overviewHeader": "",
+                "overviewParagraph": "",
+                "overviewImage": ""
             },
             "features": [
                 {
@@ -229,9 +229,9 @@
         "title": "Radeon RX 5000 Series",
         "content": {
             "overview": {
-                "overview-header": "",
-                "overview-paragraph": "",
-                "overview-image": ""
+                "overviewHeader": "",
+                "overviewParagraph": "",
+                "overviewImage": ""
             },
             "features": [
                 {
@@ -261,9 +261,9 @@
         "title": "Radeon RX Vega Series",
         "content": {
             "overview": {
-                "overview-header": "",
-                "overview-paragraph": "",
-                "overview-image": ""
+                "overviewHeader": "",
+                "overviewParagraph": "",
+                "overviewImage": ""
             },
             "features": [
                 {
@@ -293,9 +293,9 @@
         "title": "Radeon RX 500 Series",
         "content": {
             "overview": {
-                "overview-header": "",
-                "overview-paragraph": "",
-                "overview-image": ""
+                "overviewHeader": "",
+                "overviewParagraph": "",
+                "overviewImage": ""
             },
             "features": [
                 {
@@ -318,6 +318,99 @@
                 }
             ],
             "models": []
+        }
+    },
+    {
+        "link": "/product.html?p=about",
+        "title": "About Us",
+        "content": {
+            "overview": {
+                "overviewHeader": "",
+                "overviewParagraph": "",
+                "overviewImage": ""
+            },
+            "features": [
+                {
+                    "id": 0,
+                    "title": "",
+                    "paragraph": "",
+                    "image": ""
+                },
+                {
+                    "id": 1,
+                    "title": "",
+                    "paragraph": "",
+                    "image": ""
+                },
+                {
+                    "id": 2,
+                    "title": "",
+                    "paragraph": "",
+                    "image": ""
+                }
+            ]
+        }
+    },
+    {
+        "link": "/product.html?p=contact",
+        "title": "Contact Us",
+        "content": {
+            "overview": {
+                "overviewHeader": "",
+                "overviewParagraph": "",
+                "overviewImage": ""
+            },
+            "features": [
+                {
+                    "id": 0,
+                    "title": "",
+                    "paragraph": "",
+                    "image": ""
+                },
+                {
+                    "id": 1,
+                    "title": "",
+                    "paragraph": "",
+                    "image": ""
+                },
+                {
+                    "id": 2,
+                    "title": "",
+                    "paragraph": "",
+                    "image": ""
+                }
+            ]
+        }
+    },
+    {
+        "link": "/index.html",
+        "title": "Home",
+        "content": {
+            "overview": {
+                "overviewHeader": "",
+                "overviewParagraph": "",
+                "overviewImage": ""
+            },
+            "features": [
+                {
+                    "id": 0,
+                    "title": "",
+                    "paragraph": "",
+                    "image": ""
+                },
+                {
+                    "id": 1,
+                    "title": "",
+                    "paragraph": "",
+                    "image": ""
+                },
+                {
+                    "id": 2,
+                    "title": "",
+                    "paragraph": "",
+                    "image": ""
+                }
+            ]
         }
     }
 ]

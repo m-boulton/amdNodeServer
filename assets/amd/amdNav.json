@@ -1,20 +1,15 @@
 {
-    "nav-list": [
+    "navList": [
         {
             "link": "/index.html",
             "title": "Home",
-            "navigationInclude": "false",
-            "content": {
-                "overview-header": "",
-                "overview-paragraph": "",
-                "overview-image": ""
-            }
+            "navigationInclude": "false"
         },
         {
             "link": "null",
             "title": "Processors",
             "class": "",
-            "child-class": "",
+            "childClass": "",
             "onclick": "",
             "navigationInclude": "true",
             "list": [
@@ -54,7 +49,7 @@
             "link": "null",
             "title": "Graphics",
             "class": "",
-            "child-class": "",
+            "childClass": "",
             "onclick": "",
             "navigationInclude": "true",
             "list": [
@@ -84,23 +79,13 @@
             "link": "/product.html?p=about",
             "title": "About Us",
             "class": "",
-            "navigationInclude": "true",
-            "content": {
-                "overview-header": "",
-                "overview-paragraph": "",
-                "overview-image": ""
-            }
+            "navigationInclude": "true"
         },
         {
             "link": "/product.html?p=contact",
             "title": "Contact Us",
             "class": "",
-            "navigationInclude": "true",
-            "content": {
-                "overview-header": "",
-                "overview-paragraph": "",
-                "overview-image": ""
-            }
+            "navigationInclude": "true"
         }
     ]
 }

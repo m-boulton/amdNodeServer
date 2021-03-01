@@ -30,15 +30,17 @@ router
       nav: req.body.nav,
     });
     try {
-      const savedPost = await post.save();
-      res.json(savedPost);
-      console.log(`posted to nav DB with ${req.body.title}`);
+      if (req.body.auth === false) {
+        res.json({ message: "Password Incorrect" });
+      } else {
+        const savedPost = await post.save();
+        res.json(savedPost);
+      }
     } catch (err) {
       res.json({
-        type: "there was an error",
+        type: "Error",
         message: err,
       });
-      console.log(err);
     }
   })
 
@@ -83,13 +85,18 @@ router
 
   .post(async (req, res) => {
     const post = new AmdContent({
-      title: req.body.title,
-      content: req.body.content,
+      link: req.body.payload.link,
+      title: req.body.payload.title,
+      content: req.body.payload.content,
     });
     try {
-      const savedPost = await post.save();
-      res.json(savedPost);
-      console.log(`posted to content DB with ${req.body.title}`);
+      if (req.body.auth === false) {
+        res.json({ message: "Password Incorrect" });
+      } else {
+        const savedPost = await post.save();
+        res.json({ message: "Data saved", saved: savedPost });
+        console.log("Data Posted to Amd Content");
+      }
     } catch (err) {
       res.json({
         type: "there was an error",
@@ -152,7 +159,6 @@ router
         type: "there was an error",
         message: err,
       });
-      console.log(err);
     }
   })
 

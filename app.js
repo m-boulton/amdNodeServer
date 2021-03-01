@@ -2,23 +2,31 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+
+// Loading Environment Variables
 if (process.env.NODE_ENV) {
   require("dotenv").config({
     path: `/var/www/env/.env.${process.env.NODE_ENV}`,
   });
+  console.log("Using Production Environment Variables");
 } else {
   require("dotenv").config();
+  console.log("Using Developer Environment Variables");
 }
 
 // DotEnv Variables
-const { AMD_DB_CONNECT: amdDatabase, DEV_URL: devUrl } = process.env;
-const port = process.env.PORT || 5000;
+const {
+  AMD_DB_CONNECT: amdDatabase,
+  DEV_URL: devUrl,
+  PORT: port,
+  POST_CRED: postPassword,
+} = process.env;
 
 // Import Routes
 const amdRoutes = require("./routes/amd/amdRoutes");
 // const cloudRoutes = require("./routes/cloud/cloudRoutes");
 
-// Connect to database
+// Connect to database -------------------------------------------------------------------------------
 mongoose.connect(
   amdDatabase,
   {
@@ -31,7 +39,7 @@ mongoose.connect(
   }
 );
 
-// Middleware
+// Middleware ---------------------------------------------------------------------------------------
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "1mb" }));
@@ -41,18 +49,29 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
-
-// Routes
-app.get("/", (req, res) => {
-  res.send(`this is the root api`);
+// Checks the request body for the password so that you can post to the database
+app.use((req, res, next) => {
+  req.body.auth = false;
+  req.body.password === postPassword
+    ? (req.body.auth = true)
+    : (req.body.auth = false);
+  next();
 });
+
+// Routes --------------------------------------------------------------------------------------------
+app.get("/", (req, res) => {
+  res.json({ message: `this is the root api` });
+});
+// app.get("/test", (req, res) => {
+//   console.log("test endpoint ", req.body);
+// });
 app.use("/amd", amdRoutes);
 // app.use("/cloud", cloudRoutes);
 
-// Port Listeners
+// Port Listeners -----------------------------------------------------------------------------------
 app.listen(port, (err) => {
   if (err) {
     return console.log("ERROR ", err);
   }
-  console.log(`listening on port ${port}`);
+  console.log(`Listening on port ${port}`);
 });
