@@ -2,16 +2,17 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const { amdNavVersionCheck } = require("./functions/amd/amdFunctions");
 
 // Loading Environment Variables
 if (process.env.NODE_ENV) {
   require("dotenv").config({
     path: `/var/www/env/.env.${process.env.NODE_ENV}`,
   });
-  console.log("Using Production Environment Variables");
+  console.log("*** Using Production Environment Variables ***");
 } else {
   require("dotenv").config();
-  console.log("Using Developer Environment Variables");
+  console.log("*** Using Developer Environment Variables ***");
 }
 
 // DotEnv Variables
@@ -35,7 +36,9 @@ mongoose.connect(
     useUnifiedTopology: true,
   },
   () => {
-    console.log("Connected to AmdDB");
+    console.log("*** Connected to AmdDB ***");
+    // Version check and print for database collections
+    amdNavVersionCheck(true);
   }
 );
 
@@ -73,5 +76,5 @@ app.listen(port, (err) => {
   if (err) {
     return console.log("ERROR ", err);
   }
-  console.log(`Listening on port ${port}`);
+  console.log(`*** Listening on port ${port} ***`);
 });

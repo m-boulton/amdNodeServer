@@ -3,7 +3,10 @@ const router = express.Router();
 const AmdNav = require("../../models/amd/amdModelNav");
 const AmdContent = require("../../models/amd/amdModelContent");
 const AmdSpec = require("../../models/amd/amdModelSpec");
-// const amdFunc = require("../functions/amdFunctions");
+const {
+  amdNavVersionCheck,
+  amdNavVersionUpdate,
+} = require("../../functions/amd/amdFunctions");
 
 // Routing for amd nav data -------------------------------------------------- Nav Routing
 
@@ -14,8 +17,8 @@ router
 
   .get(async (req, res) => {
     try {
-      const posts = await AmdNav.find();
-      res.json(posts);
+      const get = await AmdNav.find();
+      res.json(get);
       console.log("data requested for the amdDB navs");
     } catch (err) {
       res.json({ message: "there was an error", error: err });
@@ -26,19 +29,21 @@ router
 
   .post(async (req, res) => {
     const post = new AmdNav({
-      title: req.body.title,
-      nav: req.body.nav,
+      navList: req.body.payload.navList,
+      version: req.body.payload.version,
     });
     try {
+      // Checking for authroization to change the database
       if (req.body.auth === false) {
         res.json({ message: "Password Incorrect" });
       } else {
         const savedPost = await post.save();
         res.json(savedPost);
+        console.log("posted to Amd nav on the database");
       }
     } catch (err) {
       res.json({
-        type: "Error",
+        type: "Error posting to the Database",
         message: err,
       });
     }
@@ -47,17 +52,27 @@ router
   // updates to amd nav data on database
 
   .put(async (req, res) => {
-    const updatedPost = new AmdNav({
-      title: req.body.title,
-      nav: req.body.nav,
-    });
+    let versionCurrent = await amdNavVersionCheck();
+    let versionUpdate = await amdNavVersionUpdate();
+    const put = {
+      navList: req.body.payload.navList,
+      version: versionUpdate,
+    };
     try {
-      const savedPost = await updatedPost.save();
-      res.json(savedPost);
-      console.log(`updated posts to nav DB with ${req.body.title}`);
+      // Checking for authroization to change the database
+      if (req.body.auth === false) {
+        res.json({ message: "Password Incorrect" });
+      } else {
+        await AmdNav.updateOne({ version: versionCurrent }, put);
+        // const savedPost = await post.save();
+        // responding to the client and logging the updated
+        res.json(put);
+        console.log("Updated Amd nav on the database");
+        amdNavVersionCheck(true);
+      }
     } catch (err) {
       res.json({
-        type: "there was an error",
+        type: "Error posting to the Database",
         message: err,
       });
       console.log(err);
