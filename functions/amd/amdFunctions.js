@@ -1,15 +1,10 @@
 const AmdNav = require("../../models/amd/amdModelNav");
 
-// Get db version and set its value to global variable
-const amdNavVersionCheck = async (log) => {
-  const version = databaseVersionCheck(AmdNav, log);
-  return version;
-};
-
+// Get db version and return its value
 const databaseVersionCheck = async (schema, log) => {
   try {
-    const response = await schema.find();
-    const currentVersion = await response[0].version;
+    const response = await schema.findOne();
+    const currentVersion = await response.version;
     if (log) {
       console.log(`--- Database Current Version : ${currentVersion} ---`);
     }
@@ -18,12 +13,13 @@ const databaseVersionCheck = async (schema, log) => {
     console.log("There was an error with database version check : ", error);
   }
 };
-
-// Update db version
-const amdNavVersionUpdate = async (log) => {
-  const version = await databaseVersionUpdate(AmdNav, log);
+// Check Amd db version
+const amdNavVersionCheck = async (log) => {
+  const version = databaseVersionCheck(AmdNav, log);
   return version;
 };
+
+// Update db version
 const databaseVersionUpdate = async (schema, log) => {
   try {
     const currentVersion = await databaseVersionCheck(schema, log);
@@ -32,6 +28,11 @@ const databaseVersionUpdate = async (schema, log) => {
   } catch (error) {
     console.log("There was an error updating the amd nav version", error);
   }
+};
+// Update Amd db version
+const amdNavVersionUpdate = async (log) => {
+  const version = await databaseVersionUpdate(AmdNav, log);
+  return version;
 };
 
 module.exports = {

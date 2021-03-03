@@ -64,7 +64,6 @@ router
         res.json({ message: "Password Incorrect" });
       } else {
         await AmdNav.updateOne({ version: versionCurrent }, put);
-        // const savedPost = await post.save();
         // responding to the client and logging the updated
         res.json(put);
         console.log("Updated Amd nav on the database");
