@@ -5,13 +5,13 @@ const reqString = {
   required: true,
 };
 const Products = mongoose.Schema({
-  link: reqString,
-  title: reqString,
+  link: String,
+  title: String,
   class: String,
 });
 const NavList = mongoose.Schema({
   link: String,
-  title: reqString,
+  title: String,
   class: String,
   childClass: String,
   onclick: String,
