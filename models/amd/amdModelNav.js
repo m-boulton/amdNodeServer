@@ -1,15 +1,16 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const reqString = {
   type: String,
   required: true,
 };
-const Products = mongoose.Schema({
+const Products = new Schema({
   link: String,
   title: String,
   class: String,
 });
-const NavList = mongoose.Schema({
+const NavList = new Schema({
   link: String,
   title: String,
   class: String,
@@ -18,7 +19,7 @@ const NavList = mongoose.Schema({
   navigationInclude: Boolean,
   list: [Products],
 });
-const AmdNav = mongoose.Schema(
+const AmdNav = new Schema(
   {
     navList: [NavList],
     version: Number,

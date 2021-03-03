@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const amdModelContent = require("./amdModelContent");
+const { Schema } = mongoose;
 
 const reqString = {
   type: String,
@@ -7,13 +7,13 @@ const reqString = {
 };
 
 // child of AmdSpec schema
-const AmdSpecItems = mongoose.Schema({
+const AmdSpecItems = new Schema({
   title: reqString,
   spec: Object,
 });
 
 // Main schema design
-const AmdSpec = mongoose.Schema({
+const AmdSpec = new Schema({
   specs: [AmdSpecItems],
 });
 

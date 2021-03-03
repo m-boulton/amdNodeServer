@@ -1,25 +1,26 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const reqString = {
   type: String,
   required: true,
 };
-const Overview = mongoose.Schema({
+const Overview = new Schema({
   overviewHeader: String,
   overviewParagraph: String,
   overviewImage: String,
 });
-const Features = mongoose.Schema({
+const Features = new Schema({
   title: String,
   paragraph: String,
   image: String,
 });
-const Content = mongoose.Schema({
+const Content = new Schema({
   overview: [Overview],
   features: [Features],
   models: Array,
 });
-const AmdContent = mongoose.Schema(
+const AmdContent = new Schema(
   {
     link: reqString,
     title: reqString,
