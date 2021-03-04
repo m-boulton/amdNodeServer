@@ -28,18 +28,18 @@ router
   // posts made to amd nav database
 
   .post(async (req, res) => {
-    const post = new AmdNav({
-      navigation: req.body.payload.navigation,
-      navList: req.body.payload.navList,
-      version: req.body.payload.version,
-    });
+    // const post = await new AmdNav({
+    //   navigation: req.body.payload.navigation,
+    //   navList: req.body.payload.navList,
+    //   version: req.body.payload.version,
+    // });
     try {
       // Checking for authroization to change the database
       if (req.body.auth === false) {
         res.json({ message: "Password Incorrect" });
       } else {
-        const savedPost = await post.save();
-        res.json(savedPost);
+        // const savedPost = await post.save();
+        // res.json(savedPost);
         console.log("posted to Amd nav on the database");
       }
     } catch (err) {
