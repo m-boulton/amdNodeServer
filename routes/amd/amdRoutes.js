@@ -34,7 +34,7 @@ router
     //   version: req.body.payload.version,
     // });
     try {
-      // Checking for authroization to change the database
+      // Checking for authorization to change the database
       if (req.body.auth === false) {
         res.json({ message: "Password Incorrect" });
       } else {
@@ -128,8 +128,9 @@ router
 
   .put(async (req, res) => {
     const updatedPost = new AmdContent({
-      title: req.body.title,
-      content: req.body.content,
+      link: req.body.payload.link,
+      title: req.body.payload.title,
+      content: req.body.payload.content,
     });
     try {
       const savedPost = await updatedPost.save();
@@ -168,8 +169,8 @@ router
 
   .post(async (req, res) => {
     const post = new AmdSpec({
-      title: req.body.title,
-      spec: req.body.spec,
+      title: req.body.payload.title,
+      spec: req.body.payload.spec,
     });
     try {
       const savedPost = await post.save();
@@ -187,8 +188,8 @@ router
 
   .put(async (req, res) => {
     const updatedPost = new AmdSpec({
-      title: req.body.title,
-      spec: req.body.spec,
+      title: req.body.payload.title,
+      spec: req.body.payload.spec,
     });
     try {
       const savedPost = await updatedPost.save();
