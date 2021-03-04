@@ -21,7 +21,7 @@ router
       res.json(get);
       console.log("data requested for the amdDB navs");
     } catch (err) {
-      res.json({ message: "there was an error", error: err });
+      res.json({ message: "there was an error getting amd nav", error: err });
     }
   })
 
@@ -69,7 +69,6 @@ router
         // responding to the client and logging the updated
         res.json(put);
         console.log("Updated Amd nav on the database");
-        amdNavVersionCheck(true);
       }
     } catch (err) {
       res.json({
