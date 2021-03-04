@@ -92,7 +92,10 @@ router
       res.json(posts);
       console.log("data requested for the amdDB contents");
     } catch (err) {
-      res.json({ message: "there was an error", error: err });
+      res.json({
+        message: "there was an error getting amd content",
+        error: err,
+      });
     }
   })
 
@@ -114,7 +117,7 @@ router
       }
     } catch (err) {
       res.json({
-        type: "there was an error",
+        type: "there was an error posting amd content",
         message: err,
       });
       console.log(err);
@@ -134,7 +137,7 @@ router
       console.log(`updated posts to content DB with ${req.body.title}`);
     } catch (err) {
       res.json({
-        type: "there was an error",
+        type: "there was an error putting amd content",
         message: err,
       });
       console.log(err);
@@ -154,7 +157,10 @@ router
       res.json(posts);
       console.log("data requested for the amdDB specs");
     } catch (err) {
-      res.json({ message: "there was an error", error: err });
+      res.json({
+        message: "there was an error getting amd spec's",
+        error: err,
+      });
     }
   })
 
@@ -171,7 +177,7 @@ router
       console.log(`posted to spec DB with ${req.body.title}`);
     } catch (err) {
       res.json({
-        type: "there was an error",
+        type: "there was an error posting amd spec's",
         message: err,
       });
     }
@@ -190,7 +196,7 @@ router
       console.log(`updated posts to spec DB with ${req.body.title}`);
     } catch (err) {
       res.json({
-        type: "there was an error",
+        type: "there was an error putting amd spec's",
         message: err,
       });
       console.log(err);
