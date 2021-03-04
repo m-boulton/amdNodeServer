@@ -13,9 +13,12 @@ const AmdSpecItems = new Schema({
 });
 
 // Main schema design
-const AmdSpec = new Schema({
-  specs: [AmdSpecItems],
-});
+const AmdSpec = new Schema(
+  {
+    specs: [AmdSpecItems],
+  },
+  { timestamps: true }
+);
 
 // exporting schemas to the model method
 module.exports = mongoose.model("AmdSpec", AmdSpec);

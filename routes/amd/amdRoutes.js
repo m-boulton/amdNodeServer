@@ -102,17 +102,17 @@ router
   // posts made to amd content database
 
   .post(async (req, res) => {
-    // const post = new AmdContent({
-    //   link: req.body.payload.link,
-    //   title: req.body.payload.title,
-    //   content: req.body.payload.content,
-    // });
+    const post = new AmdContent({
+      link: req.body.payload.link,
+      title: req.body.payload.title,
+      content: req.body.payload.content,
+    });
     try {
       if (req.body.auth === false) {
         res.json({ message: "Password Incorrect" });
       } else {
-        // const savedPost = await post.save();
-        // res.json({ message: "Data saved", saved: savedPost });
+        const savedPost = await post.save();
+        res.json({ message: "Data saved", saved: savedPost });
         console.log("Data Posted to Amd Content");
       }
     } catch (err) {
@@ -127,14 +127,14 @@ router
   // updates to amd content data on database
 
   .put(async (req, res) => {
-    // const updatedPost = new AmdContent({
-    //   link: req.body.payload.link,
-    //   title: req.body.payload.title,
-    //   content: req.body.payload.content,
-    // });
+    const updatedPost = new AmdContent({
+      link: req.body.payload.link,
+      title: req.body.payload.title,
+      content: req.body.payload.content,
+    });
     try {
-      // const savedPost = await updatedPost.save();
-      // res.json(savedPost);
+      const savedPost = await updatedPost.save();
+      res.json(savedPost);
       console.log(`updated posts to content DB with ${req.body.title}`);
     } catch (err) {
       res.json({
@@ -168,13 +168,13 @@ router
   // posts made to amd spec database
 
   .post(async (req, res) => {
-    // const post = new AmdSpec({
-    //   title: req.body.payload.title,
-    //   spec: req.body.payload.spec,
-    // });
+    const post = new AmdSpec({
+      title: req.body.payload.title,
+      spec: req.body.payload.spec,
+    });
     try {
-      // const savedPost = await post.save();
-      // res.json(savedPost);
+      const savedPost = await post.save();
+      res.json(savedPost);
       console.log(`posted to spec DB with ${req.body.title}`);
     } catch (err) {
       res.json({
@@ -187,13 +187,13 @@ router
   // updates to amd spec data on database
 
   .put(async (req, res) => {
-    // const updatedPost = new AmdSpec({
-    //   title: req.body.payload.title,
-    //   spec: req.body.payload.spec,
-    // });
+    const updatedPost = new AmdSpec({
+      title: req.body.payload.title,
+      spec: req.body.payload.spec,
+    });
     try {
-      // const savedPost = await updatedPost.save();
-      // res.json(savedPost);
+      const savedPost = await updatedPost.save();
+      res.json(savedPost);
       console.log(`updated posts to spec DB with ${req.body.title}`);
     } catch (err) {
       res.json({

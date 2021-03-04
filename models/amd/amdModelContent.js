@@ -22,8 +22,8 @@ const Content = new Schema({
 });
 const AmdContent = new Schema(
   {
-    link: reqString,
-    title: reqString,
+    link: String,
+    title: String,
     content: [Content],
   },
   { timestamps: true }
