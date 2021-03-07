@@ -1,14 +1,18 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
+const reqString = {
+  type: String,
+  required: true,
+};
 const Products = new Schema({
-  prodLink: String,
-  prodTitle: String,
+  link: String,
+  title: String,
   class: String,
 });
 const NavList = new Schema({
-  navLink: String,
-  navTitle: String,
+  link: String,
+  title: String,
   class: String,
   childClass: String,
   onclick: String,
