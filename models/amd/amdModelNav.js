@@ -21,7 +21,7 @@ const NavList = new Schema({
 });
 const AmdNav = new Schema(
   {
-    navigation: Boolean,
+    primary: Boolean,
     navList: [NavList],
     version: Number,
   },

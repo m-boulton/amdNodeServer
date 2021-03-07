@@ -29,7 +29,7 @@ router
 
   .post(async (req, res) => {
     const post = new AmdNav({
-      navigation: req.body.payload.navigation,
+      primary: req.body.payload.primary,
       navList: req.body.payload.navList,
       version: req.body.payload.version,
     });
