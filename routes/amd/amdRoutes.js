@@ -68,7 +68,9 @@ router
         await AmdNav.updateOne({ primary: true }, put);
         // responding to the client and logging the updated
         res.json(put);
-        console.log("Updated Amd nav on the database");
+        console.log(
+          `Updated Amd nav on the database to version: ${put.version}`
+        );
       }
     } catch (err) {
       res.json({
