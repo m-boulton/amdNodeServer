@@ -3,54 +3,53 @@ const router = express.Router();
 // const AmdNav = require("../../models/amd/amdModelNav");
 const AmdContent = require("../../models/amd/amdModelContent");
 const AmdSpec = require("../../models/amd/amdModelSpec");
-const {
-  amdNavVersionCheck,
-  amdNavVersionUpdate,
-} = require("../../functions/amd/amdFunctions");
+// const {
+//   amdNavVersionCheck,
+//   amdNavVersionUpdate,
+// } = require("../../functions/amd/amdFunctions");
 
 // Routing for amd nav data -------------------------------------------------- Nav Routing
 
-router
-  .route("/nav")
+router.route("/nav");
 
-  // get request for amd nav data
+// get request for amd nav data
 
-  .get(async (req, res) => {
-    try {
-      const get = await AmdNav.find();
-      res.json(get);
-      console.log("data requested for the amdDB navs");
-    } catch (err) {
-      res.json({ message: "there was an error getting amd nav", error: err });
-    }
-  })
+// .get(async (req, res) => {
+//   try {
+//     const get = await AmdNav.find();
+//     res.json(get);
+//     console.log("data requested for the amdDB navs");
+//   } catch (err) {
+//     res.json({ message: "there was an error getting amd nav", error: err });
+//   }
+// })
 
-  // posts made to amd nav database
+// posts made to amd nav database
 
-  .post(async (req, res) => {
-    const post = {
-      navigation: req.body.payload.navigation,
-      navList: req.body.payload.navList,
-      version: req.body.payload.version,
-    };
-    res.json(post);
-    // console.log(`this is the data ${post}`);
-    // try {
-    //   // Checking for authorization to change the database
-    //   if (req.body.auth === false) {
-    //     res.json({ message: "Password Incorrect" });
-    //   } else {
-    //     const savedPost = await new AmdNav(post).save();
-    //     res.json(savedPost);
-    //     console.log("posted to Amd nav on the database");
-    //   }
-    // } catch (err) {
-    //   res.json({
-    //     type: "Error posting to the Database",
-    //     message: err,
-    //   });
-    // }
-  });
+// .post(async (req, res) => {
+//   const post = {
+//     navigation: req.body.payload.navigation,
+//     navList: req.body.payload.navList,
+//     version: req.body.payload.version,
+//   };
+//   res.json(post);
+// console.log(`this is the data ${post}`);
+// try {
+//   // Checking for authorization to change the database
+//   if (req.body.auth === false) {
+//     res.json({ message: "Password Incorrect" });
+//   } else {
+//     const savedPost = await new AmdNav(post).save();
+//     res.json(savedPost);
+//     console.log("posted to Amd nav on the database");
+//   }
+// } catch (err) {
+//   res.json({
+//     type: "Error posting to the Database",
+//     message: err,
+//   });
+// }
+// });
 
 // updates to amd nav data on database
 
