@@ -5,15 +5,18 @@ const mongoose = require("mongoose");
 const { amdNavVersionCheck } = require("./functions/amd/amdFunctions");
 
 // Loading Environment Variables
-if (process.env.NODE_ENV) {
-  require("dotenv").config({
-    path: `/var/www/env/.env.${process.env.NODE_ENV}`,
-  });
-  console.log("*** Using Production Environment Variables ***");
-} else {
-  require("dotenv").config();
-  console.log("*** Using Developer Environment Variables ***");
-}
+require("dotenv").config({ path: `/var/www/env/.env` });
+require("dotenv").config();
+console.log(`*** Using ${process.env.NODE_ENV} Environment Variables ***`);
+// if (process.env.NODE_ENV) {
+//   require("dotenv").config({
+//     path: `/var/www/env/.env.${process.env.NODE_ENV}`,
+//   });
+//   console.log("*** Using Production Environment Variables ***");
+// } else {
+//   require("dotenv").config();
+//   console.log("*** Using Developer Environment Variables ***");
+// }
 
 // DotEnv Variables
 const {
