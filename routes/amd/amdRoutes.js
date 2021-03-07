@@ -56,7 +56,7 @@ router
     let versionCurrent = await amdNavVersionCheck();
     let versionUpdate = await amdNavVersionUpdate();
     const put = {
-      navigation: req.body.payload.navigation,
+      primary: req.body.payload.primary,
       navList: req.body.payload.navList,
       version: versionUpdate,
     };
@@ -65,7 +65,7 @@ router
       if (req.body.auth === false) {
         res.json({ message: "Password Incorrect" });
       } else {
-        await AmdNav.updateOne({ navigation: true }, put);
+        await AmdNav.updateOne({ primary: true }, put);
         // responding to the client and logging the updated
         res.json(put);
         console.log("Updated Amd nav on the database");
