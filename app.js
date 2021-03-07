@@ -23,10 +23,6 @@ const {
   POST_CRED: postPassword,
 } = process.env;
 
-// Import Routes
-const amdRoutes = require("./routes/amd/amdRoutes");
-// const cloudRoutes = require("./routes/cloud/cloudRoutes");
-
 // Connect to database -------------------------------------------------------------------------------
 mongoose.connect(
   amdDatabase,
@@ -60,6 +56,10 @@ app.use((req, res, next) => {
     : (req.body.auth = false);
   next();
 });
+
+// Import Routes
+const amdRoutes = require("./routes/amd/amdRoutes");
+// const cloudRoutes = require("./routes/cloud/cloudRoutes");
 
 // Routes --------------------------------------------------------------------------------------------
 app.get("/", (req, res) => {

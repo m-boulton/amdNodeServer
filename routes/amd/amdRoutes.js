@@ -35,13 +35,13 @@ router
     });
     try {
       // Checking for authorization to change the database
-      // if (req.body.auth === false) {
-      //   res.json({ message: "Password Incorrect" });
-      // } else {
-      const savedPost = await post.save();
-      res.json(savedPost);
-      console.log("posted to Amd nav on the database");
-      // }
+      if (req.body.auth === false) {
+        res.json({ message: "Password Incorrect" });
+      } else {
+        const savedPost = await post.save();
+        res.json(savedPost);
+        console.log("posted to Amd nav on the database");
+      }
     } catch (err) {
       res.json({
         type: "Error posting to the Database",
