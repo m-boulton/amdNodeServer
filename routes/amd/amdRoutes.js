@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const AmdNav = require("../../models/amd/amdModelNav");
+// const AmdNav = require("../../models/amd/amdModelNav");
 const AmdContent = require("../../models/amd/amdModelContent");
 const AmdSpec = require("../../models/amd/amdModelSpec");
 const {
@@ -50,36 +50,36 @@ router
     //     message: err,
     //   });
     // }
-  })
-
-  // updates to amd nav data on database
-
-  .put(async (req, res) => {
-    let versionCurrent = await amdNavVersionCheck();
-    let versionUpdate = await amdNavVersionUpdate();
-    const put = {
-      navigation: req.body.payload.navigation,
-      navList: req.body.payload.navList,
-      version: versionUpdate,
-    };
-    try {
-      // Checking for authroization to change the database
-      if (req.body.auth === false) {
-        res.json({ message: "Password Incorrect" });
-      } else {
-        await AmdNav.updateOne({ navigation: true }, put);
-        // responding to the client and logging the updated
-        res.json(put);
-        console.log("Updated Amd nav on the database");
-      }
-    } catch (err) {
-      res.json({
-        type: "Error posting to the Database",
-        message: err,
-      });
-      console.log(err);
-    }
   });
+
+// updates to amd nav data on database
+
+// .put(async (req, res) => {
+//   let versionCurrent = await amdNavVersionCheck();
+//   let versionUpdate = await amdNavVersionUpdate();
+//   const put = {
+//     navigation: req.body.payload.navigation,
+//     navList: req.body.payload.navList,
+//     version: versionUpdate,
+//   };
+//   try {
+//     // Checking for authroization to change the database
+//     if (req.body.auth === false) {
+//       res.json({ message: "Password Incorrect" });
+//     } else {
+//       await AmdNav.updateOne({ navigation: true }, put);
+//       // responding to the client and logging the updated
+//       res.json(put);
+//       console.log("Updated Amd nav on the database");
+//     }
+//   } catch (err) {
+//     res.json({
+//       type: "Error posting to the Database",
+//       message: err,
+//     });
+//     console.log(err);
+//   }
+// });
 
 // Routing for amd content data ----------------------------------------------- Content Routing
 
