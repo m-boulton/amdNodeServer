@@ -6,13 +6,13 @@ const reqString = {
   required: true,
 };
 const Products = new Schema({
-  link: String,
-  title: String,
+  prodLink: String,
+  prodTitle: String,
   class: String,
 });
 const NavList = new Schema({
-  link: String,
-  title: String,
+  navLink: String,
+  navTitle: String,
   class: String,
   childClass: String,
   onclick: String,
