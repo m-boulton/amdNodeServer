@@ -2,7 +2,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-// const { amdNavVersionCheck } = require("./functions/amd/amdFunctions");
+const { amdNavVersionCheck } = require("./functions/amd/amdFunctions");
 
 // Loading Environment Variables
 if (process.env.NODE_ENV) {
@@ -34,6 +34,7 @@ mongoose.connect(
   () => {
     console.log("*** Connected to AmdDB ***");
     // Version check and print for database collections
+    amdNavVersionCheck(true);
   }
 );
 
