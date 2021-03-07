@@ -5,24 +5,24 @@ const reqString = {
   type: String,
   required: true,
 };
-// const Products = new Schema({
-//   link: String,
-//   title: String,
-//   class: String,
-// });
-// const NavList = new Schema({
-//   link: String,
-//   title: String,
-//   class: String,
-//   childClass: String,
-//   onclick: String,
-//   navigationInclude: Boolean,
-//   list: [Products],
-// });
+const Products = new Schema({
+  link: String,
+  title: String,
+  class: String,
+});
+const NavList = new Schema({
+  link: String,
+  title: String,
+  class: String,
+  childClass: String,
+  onclick: String,
+  navigationInclude: Boolean,
+  list: [Products],
+});
 const AmdNav = new Schema(
   {
     navigation: Boolean,
-    navList: [],
+    navList: [NavList],
     version: Number,
   },
   { timestamps: true }

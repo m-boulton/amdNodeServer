@@ -33,6 +33,7 @@ router
       navList: req.body.payload.navList,
       version: req.body.payload.version,
     });
+    console.log(`this is the data ${post}`);
     try {
       // Checking for authorization to change the database
       if (req.body.auth === false) {
