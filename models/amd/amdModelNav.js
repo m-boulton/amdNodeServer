@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const reqString = {
-  type: String,
-  required: true,
-};
 const Products = new Schema({
   prodLink: String,
   prodTitle: String,
