@@ -15,16 +15,19 @@ const Features = new Schema({
   paragraph: String,
   image: String,
 });
+const Models = new Schema({
+  name: String,
+});
 const Content = new Schema({
-  overview: [Overview],
+  overview: Overview,
   features: [Features],
-  models: Array,
+  models: [Models],
 });
 const AmdContent = new Schema(
   {
-    link: String,
-    title: String,
-    content: [Content],
+    link: reqString,
+    title: reqString,
+    content: Content,
   },
   { timestamps: true }
 );

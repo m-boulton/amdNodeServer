@@ -8,15 +8,6 @@ const { amdNavVersionCheck } = require("./functions/amd/amdFunctions");
 require("dotenv").config({ path: `/var/www/env/.env` });
 require("dotenv").config();
 console.log(`*** Using ${process.env.NODE_ENV} Environment Variables ***`);
-// if (process.env.NODE_ENV) {
-//   require("dotenv").config({
-//     path: `/var/www/env/.env.${process.env.NODE_ENV}`,
-//   });
-//   console.log("*** Using Production Environment Variables ***");
-// } else {
-//   require("dotenv").config();
-//   console.log("*** Using Developer Environment Variables ***");
-// }
 
 // DotEnv Variables
 const {
@@ -61,18 +52,17 @@ app.use((req, res, next) => {
 });
 
 // Import Routes
-const amdRoutes = require("./routes/amd/amdRoutes");
-// const cloudRoutes = require("./routes/cloud/cloudRoutes");
+const amdNavRoutes = require("./routes/amd/amdNavRoutes");
+const amdContentRoutes = require("./routes/amd/amdContentRoutes");
+const amdSpecRoutes = require("./routes/amd/amdSpecRoutes");
 
 // Routes --------------------------------------------------------------------------------------------
+app.use("/amd/nav", amdNavRoutes);
+app.use("/amd/content", amdContentRoutes);
+app.use("/amd/spec", amdSpecRoutes);
 app.get("/", (req, res) => {
   res.json({ message: `this is the root api` });
 });
-// app.get("/test", (req, res) => {
-//   console.log("test endpoint ", req.body);
-// });
-app.use("/amd", amdRoutes);
-// app.use("/cloud", cloudRoutes);
 
 // Port Listeners -----------------------------------------------------------------------------------
 app.listen(port, (err) => {
