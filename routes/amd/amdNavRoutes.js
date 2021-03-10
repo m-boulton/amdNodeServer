@@ -4,21 +4,8 @@ const AmdNav = require("../../models/amd/amdNavModel");
 const {
   amdNavVersionCheck,
   amdNavVersionUpdate,
+  auth,
 } = require("../../functions/amd/amdFunctions");
-
-// Check for authentication
-const auth = (req, res, next) => {
-  if (req.body.auth) {
-    next();
-  } else {
-    console.log(
-      `Posting priveleges have been denied by ${JSON.stringify(
-        req.headers.host
-      )}`
-    );
-    res.json({ message: "Incorrect Password" });
-  }
-};
 
 // Routing for amd nav data -------------------------------------------------- Nav Routing
 
@@ -31,9 +18,9 @@ router
     try {
       const get = await AmdNav.find({ primary: true });
       res.json(get);
-      console.log("data requested for the amdDB Nav");
+      console.log("Data requested for the amdDB Nav");
     } catch (err) {
-      res.json({ message: "there was an error getting amd nav", error: err });
+      res.json({ message: "There was an error getting amd nav", error: err });
     }
   })
 
@@ -48,7 +35,7 @@ router
     try {
       const savedPost = await post.save();
       res.json(savedPost);
-      console.log("posted to Amd nav on the database");
+      console.log("Posted to amdDB nav on the database");
     } catch (err) {
       res.json({
         type: "Error posting to the Database",
