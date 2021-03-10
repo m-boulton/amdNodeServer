@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const AmdNav = require("../../models/amd/amdModelNav");
+const AmdNav = require("../../models/amd/amdNavModel");
 const {
   amdNavVersionCheck,
   amdNavVersionUpdate,

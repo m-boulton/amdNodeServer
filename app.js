@@ -1,21 +1,20 @@
+// Loading Environment Variables
+require("dotenv").config({ path: `/var/www/env/.env` });
+require("dotenv").config();
+console.log(`*** Using ${process.env.NODE_ENV} Environment Variables ***`);
+const {
+  AMD_DB_CONNECT: amdDatabase,
+  DEV_URL: devUrl,
+  SRV_URL: srvUrl,
+  PORT: port,
+  POST_CRED: postPassword,
+} = process.env;
+
 // Dependancies
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const { amdNavVersionCheck } = require("./functions/amd/amdFunctions");
-
-// Loading Environment Variables
-require("dotenv").config({ path: `/var/www/env/.env` });
-require("dotenv").config();
-console.log(`*** Using ${process.env.NODE_ENV} Environment Variables ***`);
-
-// DotEnv Variables
-const {
-  AMD_DB_CONNECT: amdDatabase,
-  DEV_URL: devUrl,
-  PORT: port,
-  POST_CRED: postPassword,
-} = process.env;
 
 // Connect to database -------------------------------------------------------------------------------
 mongoose.connect(
@@ -37,7 +36,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "1mb" }));
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", devUrl || "mboulton.com");
+  res.header("Access-Control-Allow-Origin", devUrl || srvUrl || "mboulton.com");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();

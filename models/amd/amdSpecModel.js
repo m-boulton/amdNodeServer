@@ -6,17 +6,9 @@ const reqString = {
   required: true,
 };
 
-// child of AmdSpec schema
-const AmdSpecItems = new Schema({
-  title: reqString,
-  spec: Object,
-});
-
 // Main schema design
 const AmdSpec = new Schema(
-  {
-    specs: [AmdSpecItems],
-  },
+  { title: reqString, spec: Object },
   { timestamps: true }
 );
 

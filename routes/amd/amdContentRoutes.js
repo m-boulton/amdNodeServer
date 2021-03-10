@@ -1,24 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const AmdContent = require("../../models/amd/amdModelContent");
+const AmdContent = require("../../models/amd/amdContentModel");
 const {
   amdNavVersionCheck,
   amdNavVersionUpdate,
+  auth,
 } = require("../../functions/amd/amdFunctions");
-
-// Check for authentication
-const auth = (req, res, next) => {
-  if (req.body.auth) {
-    next();
-  } else {
-    console.log(
-      `Posting priveleges have been denied by ${JSON.stringify(
-        req.headers.host
-      )}`
-    );
-    res.json({ message: "Incorrect Password" });
-  }
-};
 
 // Routing for amd content data ----------------------------------------------- Content Routing
 
@@ -38,7 +25,7 @@ router
       console.log(`Data requested for the amdDB content -- ${get[0].title}`);
     } catch (err) {
       res.json({
-        message: "there was an error getting amd content",
+        message: "There was an error getting amdDB content",
         error: err,
       });
     }
@@ -58,12 +45,12 @@ router
     try {
       const savedPost = await post.save();
       res.json({
-        message: `Data saved to Amd Content ${post.title}`,
+        message: `Data posted to Amd Content ${post.title}`,
       });
-      console.log(`Data Posted to Amd Content ${post.title}`);
+      console.log(`Data posted to Amd Content ${post.title}`);
     } catch (err) {
       res.json({
-        type: "there was an error posting amd content",
+        type: "There was an error posting amd content",
         message: err,
       });
       console.log(err);
@@ -81,10 +68,10 @@ router
     try {
       const savedPost = await updatedPost.save();
       res.json(savedPost);
-      console.log(`updated posts to content DB with ${req.body.title}`);
+      console.log(`Updated posts to amdDB content with ${req.body.title}`);
     } catch (err) {
       res.json({
-        type: "there was an error putting amd content",
+        type: "There was an error putting amd content",
         message: err,
       });
       console.log(err);

@@ -1,24 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const AmdSpec = require("../../models/amd/amdModelSpec");
+const AmdSpec = require("../../models/amd/amdSpecModel");
 const {
   amdNavVersionCheck,
   amdNavVersionUpdate,
+  auth,
 } = require("../../functions/amd/amdFunctions");
-
-// Check for authentication
-const auth = (req, res, next) => {
-  if (req.body.auth) {
-    next();
-  } else {
-    console.log(
-      `Posting priveleges have been denied by ${JSON.stringify(
-        req.headers.host
-      )}`
-    );
-    res.json({ message: "Incorrect Password" });
-  }
-};
 
 // Routing for amd spec data ------------------------------------------------- Spec Routing
 
@@ -31,10 +18,10 @@ router
     try {
       const posts = await AmdSpec.find();
       res.json(posts);
-      console.log("data requested for the amdDB specs");
+      console.log("Data requested for the amdDB specs");
     } catch (err) {
       res.json({
-        message: "there was an error getting amd spec's",
+        message: "There was an error getting amd spec's",
         error: err,
       });
     }
@@ -50,10 +37,10 @@ router
     try {
       const savedPost = await post.save();
       res.json(savedPost);
-      console.log(`posted to spec DB with ${req.body.title}`);
+      console.log(`Posted to amdDB spec with ${req.body.title}`);
     } catch (err) {
       res.json({
-        type: "there was an error posting amd spec's",
+        type: "There was an error posting amd spec's",
         message: err,
       });
     }
@@ -69,10 +56,10 @@ router
     try {
       const savedPost = await updatedPost.save();
       res.json(savedPost);
-      console.log(`updated posts to spec DB with ${req.body.title}`);
+      console.log(`Updated posts to amdDB spec with ${req.body.title}`);
     } catch (err) {
       res.json({
-        type: "there was an error putting amd spec's",
+        type: "There was an error putting amd spec's",
         message: err,
       });
       console.log(err);
