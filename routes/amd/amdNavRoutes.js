@@ -16,11 +16,24 @@ router
 
   .get(async (req, res) => {
     try {
-      const get = await AmdNav.find({ primary: true });
-      res.json(get);
-      console.log("Data requested for the amdDB Nav");
+      if (typeof req.query.v == "string") {
+        const getUpdate = await AmdNav.findOne({ primary: true });
+        if (getUpdate.version == req.query.v) {
+          res.json({ message: "Updated" });
+        } else {
+          res.json({ message: "New Update", data: getUpdate });
+        }
+      } else {
+        const get = await AmdNav.findOne({ primary: true });
+        res.json({ message: "Initial Update", data: get });
+        console.log("Data requested for the amdDB Nav");
+      }
     } catch (err) {
-      res.json({ message: "There was an error getting amd nav", error: err });
+      res.json({
+        message: "error",
+        error: "There was an error getting amd nav",
+        errorData: err,
+      });
     }
   })
 
@@ -38,8 +51,9 @@ router
       console.log("Posted to amdDB nav on the database");
     } catch (err) {
       res.json({
-        type: "Error posting to the Database",
-        message: err,
+        message: "error",
+        error: "There was an error posting to amd nav",
+        errorData: err,
       });
     }
   })
@@ -63,11 +77,11 @@ router
       console.log(`Updated Amd nav on the database to version: ${put.version}`);
     } catch (err) {
       res.json({
-        type: "Error posting to the Database",
-        message: err,
+        message: "error",
+        error: "There was an error updating to amd nav",
+        errorData: err,
       });
       console.log(err);
     }
   });
-
 module.exports = router;

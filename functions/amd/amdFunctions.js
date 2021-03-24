@@ -46,7 +46,11 @@ const auth = (req, res, next) => {
         req.headers.host
       )}`
     );
-    res.json({ message: "Incorrect Password" });
+    res.json({
+      message: "Incorrect Password",
+      error: true,
+      errorData: "Incorrect password",
+    });
   }
 };
 

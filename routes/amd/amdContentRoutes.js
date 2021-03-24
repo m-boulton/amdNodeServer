@@ -10,14 +10,14 @@ const {
 // Routing for amd content data ----------------------------------------------- Content Routing
 
 router
-  .route("/")
+  .route("/:productId")
 
   // get request for amd content data
 
   .get(async (req, res) => {
     try {
       // req.body.getById
-      const get = await AmdContent.find();
+      const get = await AmdContent.find({ title: req.params.productID });
       res.json({
         message: `This is the Amd Content for -- ${get[0].title}`,
         returnData: get,

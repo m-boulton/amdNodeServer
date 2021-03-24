@@ -10,13 +10,13 @@ const {
 // Routing for amd spec data ------------------------------------------------- Spec Routing
 
 router
-  .route("/")
+  .route("/:specId")
 
   // get request for amd spec data
 
   .get(async (req, res) => {
     try {
-      const posts = await AmdSpec.find();
+      const posts = await AmdSpec.find({ title: req.params.specId });
       res.json(posts);
       console.log("Data requested for the amdDB specs");
     } catch (err) {
