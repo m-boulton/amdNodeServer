@@ -16,17 +16,17 @@ router
 
   .get(async (req, res) => {
     try {
-      if (typeof req.query.v == "string") {
-        const getUpdate = await AmdNav.findOne({ primary: true });
-        if (getUpdate.version == req.query.v) {
+      if (typeof req.query.version == "string") {
+        const getUpdate = await AmdNav.findOne({ target: req.query.target });
+        if (getUpdate.version == req.query.version) {
           res.json({ message: "Updated" });
         } else {
-          res.json({ message: "New Update", data: getUpdate });
+          res.json({ message: "Data", data: getUpdate });
         }
       } else {
-        const get = await AmdNav.findOne({ primary: true });
-        res.json({ message: "Initial Update", data: get });
-        console.log("Data requested for the amdDB Nav");
+        const get = await AmdNav.findOne({ target: req.query.target });
+        res.json({ message: "Data", data: get });
+        console.log("Data requested for the amdDB Nav  ---  ", Date());
       }
     } catch (err) {
       res.json({
@@ -41,8 +41,8 @@ router
 
   .post(auth, async (req, res) => {
     const post = new AmdNav({
-      primary: req.body.payload.primary,
-      navList: req.body.payload.navList,
+      target: req.body.payload.target,
+      content: req.body.payload.content,
       version: req.body.payload.version,
     });
     try {
@@ -65,16 +65,18 @@ router
     let versionCurrent = await amdNavVersionCheck();
     let versionUpdate = await amdNavVersionUpdate();
     // Building the updated changes
-    const put = {
-      primary: req.body.payload.primary,
-      navList: req.body.payload.navList,
+    const putObj = {
+      target: req.body.payload.target,
+      content: req.body.payload.content,
       version: versionUpdate,
     };
     try {
-      await AmdNav.updateOne({ primary: true }, put);
+      await AmdNav.updateOne({ target: req.body.payload.target }, putObj);
       // responding to the client and logging the updated
-      res.json(put);
-      console.log(`Updated Amd nav on the database to version: ${put.version}`);
+      res.json(putObj);
+      console.log(
+        `Updated Amd nav on the database to version: ${putObj.version}`
+      );
     } catch (err) {
       res.json({
         message: "error",
