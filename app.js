@@ -27,7 +27,8 @@ mongoose.connect(
   () => {
     console.log("*** Connected to AmdDB ***");
     // Version check and print for database collections
-    amdNavVersionCheck(true);
+    amdNavVersionCheck("header", true);
+    amdNavVersionCheck("side", true);
   }
 );
 

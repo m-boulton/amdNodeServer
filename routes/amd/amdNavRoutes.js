@@ -21,12 +21,19 @@ router
         if (getUpdate.version == req.query.version) {
           res.json({ message: "Updated" });
         } else {
+          console.log(
+            `Data requested for the amdDB Nav : ${getUpdate.target} ---  `,
+            Date()
+          );
           res.json({ message: "Data", data: getUpdate });
         }
       } else {
         const get = await AmdNav.findOne({ target: req.query.target });
         res.json({ message: "Data", data: get });
-        console.log("Data requested for the amdDB Nav  ---  ", Date());
+        console.log(
+          `Data requested for the amdDB Nav : ${get.target} ---  `,
+          Date()
+        );
       }
     } catch (err) {
       res.json({
@@ -42,13 +49,14 @@ router
   .post(auth, async (req, res) => {
     const post = new AmdNav({
       target: req.body.payload.target,
+      insertId: req.body.payload.insertId,
       content: req.body.payload.content,
       version: req.body.payload.version,
     });
     try {
       const savedPost = await post.save();
       res.json(savedPost);
-      console.log("Posted to amdDB nav on the database");
+      console.log(`Posted to amdDB nav ${post.target} on the database`);
     } catch (err) {
       res.json({
         message: "error",
@@ -62,11 +70,12 @@ router
 
   .put(auth, async (req, res) => {
     // checking current version
-    let versionCurrent = await amdNavVersionCheck();
-    let versionUpdate = await amdNavVersionUpdate();
+    await amdNavVersionCheck();
+    let versionUpdate = await amdNavVersionUpdate(req.body.payload.target);
     // Building the updated changes
     const putObj = {
       target: req.body.payload.target,
+      insertId: req.body.payload.insertId,
       content: req.body.payload.content,
       version: versionUpdate,
     };
@@ -75,7 +84,7 @@ router
       // responding to the client and logging the updated
       res.json(putObj);
       console.log(
-        `Updated Amd nav on the database to version: ${putObj.version}`
+        `Updated Amd nav ${putObj.target} on the database to version: ${putObj.version}`
       );
     } catch (err) {
       res.json({

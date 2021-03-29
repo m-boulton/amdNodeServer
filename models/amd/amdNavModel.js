@@ -8,6 +8,7 @@ const reqString = {
 const AmdNav = new Schema(
   {
     target: reqString,
+    insertId: reqString,
     content: Array,
     version: Number,
   },
