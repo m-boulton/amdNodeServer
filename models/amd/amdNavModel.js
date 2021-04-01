@@ -9,7 +9,7 @@ const AmdNav = new Schema(
   {
     target: reqString,
     insertId: reqString,
-    content: Array,
+    content: Object,
     version: Number,
   },
   { timestamps: true }
