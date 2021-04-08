@@ -4,14 +4,18 @@ require("dotenv").config();
 console.log(`*** Using ${process.env.NODE_ENV} Environment Variables ***`);
 const {
   AMD_DB_CONNECT: amdDatabase,
+  CORS: corsOrigin,
   DEV_URL: devUrl,
-  SRV_URL: srvUrl,
   PORT: port,
+  HTTPS_PORT: httpsPort,
   POST_CRED: postPassword,
 } = process.env;
 
 // Dependancies
 const express = require("express");
+const https = require("https");
+const path = require("path");
+const fs = require("fs");
 const app = express();
 const mongoose = require("mongoose");
 const { amdNavVersionCheck } = require("./functions/amd/amdFunctions");
@@ -37,7 +41,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "1mb" }));
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", srvUrl);
+  res.header("Access-Control-Allow-Origin", corsOrigin);
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
@@ -74,5 +78,17 @@ app.listen(port, (err) => {
     return console.log("ERROR ", err);
   }
   console.log(`*** Listening on port ${port} ***`);
+});
+//
+const httpOptions = {
+  cert: fs.readFileSync(path.join(__dirname, "ssl", "cert.pem")),
+  key: fs.readFileSync(path.join(__dirname, "ssl", "key.pem")),
+};
+//
+https.createServer(httpOptions, app).listen(httpsPort, (err) => {
+  if (err) {
+    return console.log("ERROR ", err);
+  }
+  console.log(`*** Listening on HTTPS port ${httpsPort} ***`);
 });
 //
