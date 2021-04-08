@@ -42,6 +42,10 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
+app.use((req, res, next) => {
+  console.log(srvUrl);
+  next();
+});
 // Checks the request body for the password so that you can post to the database
 app.use((req, res, next) => {
   req.body.auth = false;
