@@ -73,12 +73,12 @@ app.get("/", (req, res) => {
 });
 
 // Port Listeners -----------------------------------------------------------------------------------
-app.listen(port, (err) => {
-  if (err) {
-    return console.log("ERROR ", err);
-  }
-  console.log(`*** Listening on port ${port} ***`);
-});
+// app.listen(port, (err) => {
+//   if (err) {
+//     return console.log("ERROR ", err);
+//   }
+//   console.log(`*** Listening on port ${port} ***`);
+// });
 //
 const httpOptions = {
   cert: fs.readFileSync(path.join(__dirname, "ssl", "cert.pem")),
