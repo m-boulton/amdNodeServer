@@ -41,13 +41,14 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "1mb" }));
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", corsOrigin);
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
+  console.log(corsOrigin);
+  console.dir(req.protocol === "https");
   next();
 });
 app.use((req, res, next) => {
-  console.log(srvUrl);
+  res.header("Access-Control-Allow-Origin", corsOrigin);
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
 // Checks the request body for the password so that you can post to the database
@@ -73,12 +74,12 @@ app.get("/", (req, res) => {
 });
 
 // Port Listeners -----------------------------------------------------------------------------------
-// app.listen(port, (err) => {
-//   if (err) {
-//     return console.log("ERROR ", err);
-//   }
-//   console.log(`*** Listening on port ${port} ***`);
-// });
+app.listen(port, (err) => {
+  if (err) {
+    return console.log("ERROR ", err);
+  }
+  console.log(`*** Listening on port ${port} ***`);
+});
 //
 const httpOptions = {
   cert: fs.readFileSync(path.join(__dirname, "ssl", "cert.pem")),
