@@ -41,7 +41,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "1mb" }));
 app.use((req, res, next) => {
-  console.log(corsOrigin);
+  console.log(req.originalUrl);
   console.dir(req.protocol === "https");
   next();
 });
