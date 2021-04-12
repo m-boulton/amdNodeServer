@@ -74,17 +74,18 @@ app.get("/", (req, res) => {
 });
 
 // Port Listeners -----------------------------------------------------------------------------------
+// setting key and cert for https connections
+const httpOptions = {
+  cert: fs.readFileSync(path.join(__dirname, "ssl", "amdServer.crt")),
+  key: fs.readFileSync(path.join(__dirname, "ssl", "amdServer.key")),
+};
+//
 app.listen(port, (err) => {
   if (err) {
     return console.log("ERROR ", err);
   }
-  console.log(`*** Listening on port ${port} ***`);
+  console.log(`*** Listening on HTTP port ${port} ***`);
 });
-//
-const httpOptions = {
-  cert: fs.readFileSync(path.join(__dirname, "ssl", "cert.pem")),
-  key: fs.readFileSync(path.join(__dirname, "ssl", "key.pem")),
-};
 //
 https.createServer(httpOptions, app).listen(httpsPort, (err) => {
   if (err) {
@@ -92,4 +93,3 @@ https.createServer(httpOptions, app).listen(httpsPort, (err) => {
   }
   console.log(`*** Listening on HTTPS port ${httpsPort} ***`);
 });
-//
