@@ -42,12 +42,12 @@ mongoose.connect(
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "1mb" }));
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", corsOrigin);
-//   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-//   res.header("Access-Control-Allow-Headers", "Content-Type");
-//   next();
-// });
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", corsOrigin);
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
 // Checks the request body for the password so that you can post to the database
 app.use((req, res, next) => {
   req.body.auth = false;
