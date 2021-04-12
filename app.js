@@ -85,6 +85,7 @@ app.listen(port, (err) => {
     return console.log("ERROR ", err);
   }
   console.log(`*** Listening on HTTP port ${port} ***`);
+  console.log(`^^^ Accepting request from ${corsOrigin}^^^`);
 });
 //
 https.createServer(httpOptions, app).listen(httpsPort, (err) => {
