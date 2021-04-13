@@ -1,30 +1,41 @@
 const express = require("express");
 const router = express.Router();
 const AmdSpec = require("../../models/amd/amdSpecModel");
-const {
-  amdNavVersionCheck,
-  amdNavVersionUpdate,
-  auth,
-} = require("../../functions/amd/amdFunctions");
+const { auth } = require("../../functions/amd/amdFunctions");
 
 // Routing for amd spec data ------------------------------------------------- Spec Routing
 
 router
-  .route("/:specId")
+  .route("/")
 
   // get request for amd spec data
 
   .get(async (req, res) => {
     try {
-      const posts = await AmdSpec.find({ title: req.params.specId });
-      res.json(posts);
-      console.log("Data requested for the amdDB specs");
+      // req.body.getById
+      const get = await AmdSpec.findOne({ target: req.query.target });
+      res.json({
+        message: "Data",
+        data: get,
+      });
+      console.log(`Data requested for the amdDB spec -- ${get.target}`, Date());
     } catch (err) {
       res.json({
-        message: "There was an error getting amd spec's",
-        error: err,
+        message: "error",
+        error: "There was an error getting amdDB spec",
+        errorData: err,
       });
     }
+    // try {
+    //   const posts = await AmdSpec.find({ title: req.params.specId });
+    //   res.json(posts);
+    //   console.log("Data requested for the amdDB specs");
+    // } catch (err) {
+    //   res.json({
+    //     message: "There was an error getting amd spec's",
+    //     error: err,
+    //   });
+    // }
   })
 
   // posts made to amd spec database
