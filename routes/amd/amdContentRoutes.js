@@ -76,22 +76,6 @@ router
       });
       console.log(err);
     }
-    // const updatedPost = new AmdContent({
-    //   link: req.body.payload.link,
-    //   title: req.body.payload.title,
-    //   content: req.body.payload.content,
-    // });
-    // try {
-    //   const savedPost = await updatedPost.save();
-    //   res.json(savedPost);
-    //   console.log(`Updated posts to amdDB content with ${req.body.title}`);
-    // } catch (err) {
-    //   res.json({
-    //     type: "There was an error putting amd content",
-    //     message: err,
-    //   });
-    //   console.log(err);
-    // }
   });
 
 module.exports = router;
