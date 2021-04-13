@@ -5,29 +5,11 @@ const reqString = {
   type: String,
   required: true,
 };
-const Overview = new Schema({
-  overviewHeader: String,
-  overviewParagraph: String,
-  overviewImage: String,
-});
-const Features = new Schema({
-  title: String,
-  paragraph: String,
-  image: String,
-});
-const Models = new Schema({
-  name: String,
-});
-const Content = new Schema({
-  overview: Overview,
-  features: [Features],
-  models: [Models],
-});
 const AmdContent = new Schema(
   {
-    link: reqString,
-    title: reqString,
-    content: Content,
+    target: reqString,
+    insertId: reqString,
+    content: Object,
   },
   { timestamps: true }
 );
