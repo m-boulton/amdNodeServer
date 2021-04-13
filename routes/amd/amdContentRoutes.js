@@ -65,9 +65,7 @@ router
       await AmdContent.updateOne({ target: req.body.payload.target }, putObj);
       // responding to the client and logging the updated
       res.json(putObj);
-      console.log(
-        `Updated Amd content ${putObj.target} on the database to version: ${putObj.version}`
-      );
+      console.log(`Updated Amd content ${putObj.target} on the database`);
     } catch (err) {
       res.json({
         message: "error",
