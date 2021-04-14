@@ -69,8 +69,6 @@ router
   // updates to amd nav data on database
 
   .put(auth, async (req, res) => {
-    // checking current version
-    await amdNavVersionCheck();
     let versionUpdate = await amdNavVersionUpdate(req.body.payload.target);
     // Building the updated changes
     const putObj = {
