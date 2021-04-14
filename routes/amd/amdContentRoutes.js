@@ -13,13 +13,13 @@ router
   .get(async (req, res) => {
     try {
       // req.body.getById
-      const get = await AmdContent.findOne({ target: req.query.target });
+      const get = await AmdContent.findOne({ product: req.query.p });
       res.json({
         message: "Data",
         data: get,
       });
       console.log(
-        `Data requested for the amdDB content -- ${get.target}`,
+        `Data requested for the amdDB content -- ${get.product}`,
         Date()
       );
     } catch (err) {
@@ -35,14 +35,14 @@ router
 
   .post(auth, async (req, res) => {
     const post = new AmdContent({
-      target: req.body.payload.target,
+      product: req.body.payload.product,
       insertId: req.body.payload.insertId,
       content: req.body.payload.content,
     });
     try {
       const savedPost = await post.save();
       res.json(savedPost);
-      console.log(`Posted to amdDB content ${post.target} on the database`);
+      console.log(`Posted to amdDB content ${post.product} on the database`);
     } catch (err) {
       res.json({
         message: "error",
@@ -57,15 +57,15 @@ router
   .put(auth, async (req, res) => {
     // Building the updated changes
     const putObj = {
-      target: req.body.payload.target,
+      product: req.body.payload.product,
       insertId: req.body.payload.insertId,
       content: req.body.payload.content,
     };
     try {
-      await AmdContent.updateOne({ target: req.body.payload.target }, putObj);
+      await AmdContent.updateOne({ product: req.body.payload.product }, putObj);
       // responding to the client and logging the updated
       res.json(putObj);
-      console.log(`Updated Amd content ${putObj.target} on the database`);
+      console.log(`Updated Amd content ${putObj.product} on the database`);
     } catch (err) {
       res.json({
         message: "error",

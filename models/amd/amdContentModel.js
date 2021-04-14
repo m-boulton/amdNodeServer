@@ -7,7 +7,7 @@ const reqString = {
 };
 const AmdContent = new Schema(
   {
-    target: reqString,
+    product: reqString,
     insertId: reqString,
     content: Object,
   },
