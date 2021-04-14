@@ -25,7 +25,7 @@ router
     } catch (err) {
       res.json({
         message: "error",
-        error: "There was an error getting amdDB content",
+        error: `There was an error getting amdDB content ${req.query.p}`,
         errorData: err,
       });
     }
