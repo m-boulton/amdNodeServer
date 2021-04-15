@@ -4,8 +4,8 @@ require("dotenv").config();
 console.log(`*   Using ${process.env.NODE_ENV} Environment Variables   *`);
 const {
   AMD_DB_CONNECT: amdDatabase,
-  CORS: corsOrigin,
-  // CORS_DEV: corsOrigin,
+  // CORS: corsOrigin,
+  CORS_DEV: corsOrigin,
   PORT: port,
   HTTPS_PORT: httpsPort,
   POST_CRED: postPassword,
