@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const AmdSpec = require("../../models/amd/amdSpecModel");
+const AmdSpecList = require("../../models/amd/amdSpecListModel");
+const AmdSpecItem = require("../../models/amd/amdSpecItemModel");
 const { auth } = require("../../functions/amd/amdFunctions");
+const amdSpecItemModel = require("../../models/amd/amdSpecItemModel");
 
 // Routing for amd spec data ------------------------------------------------- Spec Routing
 
@@ -11,9 +13,12 @@ router
   // get request for amd spec data
 
   .get(async (req, res) => {
+    let get = null,
     try {
+      if (req.query.location == 'list') {get = await AmdSpecList.findOne({ target: req.query.target });}
+      if (req.query.location == 'item') {get = await AmdSpecList.findOne({ target: req.query.target });}
+      if (req.query.location == null) {get = 'Item does not exist on the database'}
       // req.body.getById
-      const get = await AmdSpec.findOne({ target: req.query.target });
       res.json({
         message: "Data",
         data: get,
@@ -26,29 +31,38 @@ router
         errorData: err,
       });
     }
-    // try {
-    //   const posts = await AmdSpec.find({ title: req.params.specId });
-    //   res.json(posts);
-    //   console.log("Data requested for the amdDB specs");
-    // } catch (err) {
-    //   res.json({
-    //     message: "There was an error getting amd spec's",
-    //     error: err,
-    //   });
-    // }
   })
 
   // posts made to amd spec database
 
   .post(auth, async (req, res) => {
-    const post = new AmdSpec({
-      title: req.body.payload.title,
-      spec: req.body.payload.spec,
-    });
+    let post = null;
+    let res = null
+    if (req.query.location == 'list') { 
+      post = new AmdSpecList({
+      target: req.body.payload.target,
+      insertId: req.body.payload.insertId,
+      models: req.body.payload.models
+    })
+    res = "List Saved"
+    }
+    if (req.query.location == 'item') {
+      post = new AmdSpecItem({
+        target: req.body.payload.target,
+        insertId: req.body.payload.insertId,
+        modelId: req.body.payload.modelId,
+        items: req.body.payload.items
+      })
+      res = "Item Saved"
+    }
+    if (req.query.location == null) {res = 'Location query not Declared'}
     try {
-      const savedPost = await post.save();
-      res.json(savedPost);
-      console.log(`Posted to amdDB spec with ${req.body.title}`);
+      if (post == null){
+        res.json(res)
+        return console.log('Failed attempt to save to Amd Specs')
+      }
+      await post.save();
+      res.json(res);
     } catch (err) {
       res.json({
         type: "There was an error posting amd spec's",
@@ -60,14 +74,29 @@ router
   // updates to amd spec data on database
 
   .put(auth, async (req, res) => {
-    const updatedPost = new AmdSpec({
-      title: req.body.payload.title,
-      spec: req.body.payload.spec,
-    });
+    let putObj = null
+    let schema = null
+    if (req.query.location == "list"){
+      schema = AmdSpecList
+      putObj = {
+        target: req.body.payload.target,
+        insertId: req.body.payload.insertId,
+        models: req.body.payload.models
+      }
+    }
+    if (req.query.location == "item"){
+      schema = AmdSpecItem
+      putObj = {
+        target: req.body.payload.target,
+        insertId: req.body.payload.insertId,
+        modelId: req.body.payload.modelId,
+        items: req.body.payload.items
+      }
+    }
     try {
-      const savedPost = await updatedPost.save();
-      res.json(savedPost);
-      console.log(`Updated posts to amdDB spec with ${req.body.title}`);
+      await schema.updateOne({target: req.query.target}, putObj)
+      res.json(`Updated data to ${req.query.target} in the amd spec ${req.query.location}`);
+      console.log(`Updated posts to amdDB spec with ${req.query.target}`);
     } catch (err) {
       res.json({
         type: "There was an error putting amd spec's",
