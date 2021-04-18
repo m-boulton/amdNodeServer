@@ -8,7 +8,7 @@ const reqString = {
 
 // Main schema design
 const AmdSpecItem = new Schema(
-  { target: reqString, insertId: reqString, modelId: reqString, items: Array },
+  { target: reqString, insertId: reqString, items: Array },
   { timestamps: true }
 );
 

@@ -56,7 +56,6 @@ router
       post = new AmdSpecItem({
         target: req.body.payload.target,
         insertId: req.body.payload.insertId,
-        modelId: req.body.payload.modelId,
         items: req.body.payload.items,
       });
       response = "Item Saved";
@@ -97,7 +96,6 @@ router
       putObj = {
         target: req.body.payload.target,
         insertId: req.body.payload.insertId,
-        modelId: req.body.payload.modelId,
         items: req.body.payload.items,
       };
     }
