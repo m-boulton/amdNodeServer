@@ -13,11 +13,17 @@ router
   // get request for amd spec data
 
   .get(async (req, res) => {
-    let get = null,
+    let get = null;
     try {
-      if (req.query.location == 'list') {get = await AmdSpecList.findOne({ target: req.query.target });}
-      if (req.query.location == 'item') {get = await AmdSpecList.findOne({ target: req.query.target });}
-      if (req.query.location == null) {get = 'Item does not exist on the database'}
+      if (req.query.location == "list") {
+        get = await AmdSpecList.findOne({ target: req.query.target });
+      }
+      if (req.query.location == "item") {
+        get = await AmdSpecList.findOne({ target: req.query.target });
+      }
+      if (req.query.location == null) {
+        get = "Item does not exist on the database";
+      }
       // req.body.getById
       res.json({
         message: "Data",
@@ -37,32 +43,34 @@ router
 
   .post(auth, async (req, res) => {
     let post = null;
-    let res = null
-    if (req.query.location == 'list') { 
+    let response = null;
+    if (req.query.location == "list") {
       post = new AmdSpecList({
-      target: req.body.payload.target,
-      insertId: req.body.payload.insertId,
-      models: req.body.payload.models
-    })
-    res = "List Saved"
+        target: req.body.payload.target,
+        insertId: req.body.payload.insertId,
+        models: req.body.payload.models,
+      });
+      response = "List Saved";
     }
-    if (req.query.location == 'item') {
+    if (req.query.location == "item") {
       post = new AmdSpecItem({
         target: req.body.payload.target,
         insertId: req.body.payload.insertId,
         modelId: req.body.payload.modelId,
-        items: req.body.payload.items
-      })
-      res = "Item Saved"
+        items: req.body.payload.items,
+      });
+      response = "Item Saved";
     }
-    if (req.query.location == null) {res = 'Location query not Declared'}
+    if (req.query.location == null) {
+      response = "Location query not Declared";
+    }
     try {
-      if (post == null){
-        res.json(res)
-        return console.log('Failed attempt to save to Amd Specs')
+      if (post == null) {
+        res.json(response);
+        return console.log("Failed attempt to save to Amd Specs");
       }
       await post.save();
-      res.json(res);
+      res.json(response);
     } catch (err) {
       res.json({
         type: "There was an error posting amd spec's",
@@ -74,28 +82,30 @@ router
   // updates to amd spec data on database
 
   .put(auth, async (req, res) => {
-    let putObj = null
-    let schema = null
-    if (req.query.location == "list"){
-      schema = AmdSpecList
+    let putObj = null;
+    let schema = null;
+    if (req.query.location == "list") {
+      schema = AmdSpecList;
       putObj = {
         target: req.body.payload.target,
         insertId: req.body.payload.insertId,
-        models: req.body.payload.models
-      }
+        models: req.body.payload.models,
+      };
     }
-    if (req.query.location == "item"){
-      schema = AmdSpecItem
+    if (req.query.location == "item") {
+      schema = AmdSpecItem;
       putObj = {
         target: req.body.payload.target,
         insertId: req.body.payload.insertId,
         modelId: req.body.payload.modelId,
-        items: req.body.payload.items
-      }
+        items: req.body.payload.items,
+      };
     }
     try {
-      await schema.updateOne({target: req.query.target}, putObj)
-      res.json(`Updated data to ${req.query.target} in the amd spec ${req.query.location}`);
+      await schema.updateOne({ target: req.query.target }, putObj);
+      res.json(
+        `Updated data to ${req.query.target} in the amd spec ${req.query.location}`
+      );
       console.log(`Updated posts to amdDB spec with ${req.query.target}`);
     } catch (err) {
       res.json({
