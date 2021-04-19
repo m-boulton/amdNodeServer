@@ -3,28 +3,35 @@ const router = express.Router();
 const AmdSpecList = require("../../models/amd/amdSpecListModel");
 const AmdSpecItem = require("../../models/amd/amdSpecItemModel");
 const { auth } = require("../../functions/amd/amdFunctions");
-const amdSpecItemModel = require("../../models/amd/amdSpecItemModel");
 
 // Routing for amd spec data ------------------------------------------------- Spec Routing
 
 router
   .route("/")
 
-  // get request for amd spec data
-
   .get(async (req, res) => {
-    let get = null;
+    let reqSchema = null;
     try {
+      if (req.query.location == null || req.query.target == null) {
+        return res.json({
+          message: "Error",
+          error: `Queries missing for location : ${req.query.location} or Target ${req.query.location}`,
+        });
+      }
+      // declaring the schema based on location query
       if (req.query.location == "list") {
-        get = await AmdSpecList.findOne({ target: req.query.target });
+        reqSchema = AmdSpecList;
       }
       if (req.query.location == "item") {
-        get = await AmdSpecList.findOne({ target: req.query.target });
+        reqSchema = AmdSpecItem;
       }
-      if (req.query.location == null) {
-        get = "Item does not exist on the database";
+      let get = await reqSchema.findOne({ target: req.query.target });
+      if (get == null) {
+        return res.json({
+          message: "Empty",
+          error: "Item does not exist on the database",
+        });
       }
-      // req.body.getById
       res.json({
         message: "Data",
         data: get,
@@ -82,9 +89,9 @@ router
 
   .put(auth, async (req, res) => {
     let putObj = null;
-    let schema = null;
+    let reqSchema = null;
     if (req.query.location == "list") {
-      schema = AmdSpecList;
+      reqSchema = AmdSpecList;
       putObj = {
         target: req.body.payload.target,
         insertId: req.body.payload.insertId,
@@ -92,7 +99,7 @@ router
       };
     }
     if (req.query.location == "item") {
-      schema = AmdSpecItem;
+      reqSchema = AmdSpecItem;
       putObj = {
         target: req.body.payload.target,
         insertId: req.body.payload.insertId,
@@ -100,7 +107,7 @@ router
       };
     }
     try {
-      await schema.updateOne({ target: req.query.target }, putObj);
+      await reqSchema.updateOne({ target: req.query.target }, putObj);
       res.json(
         `Updated data to ${req.query.target} in the amd spec ${req.query.location}`
       );
