@@ -17,13 +17,3 @@ router
   });
 
 module.exports = router;
-
-// post fetch obj
-// {
-//   name: 'mike',
-//   email: 'mike@gmail.com',
-//   subject: 'hello again',
-//   message: 'this is a message',
-//   emailMe: true,
-//   auth: false
-// }
