@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const AmdSpecList = require("../../models/amd/amdSpecListModel");
-const AmdSpecItem = require("../../models/amd/amdSpecItemModel");
+const {
+  amdSpecItemModel,
+  amdSpecListModel,
+} = require("../../database/mongodbAmd");
 const { auth } = require("../../functions/amd/amdFunctions");
 
 // Routing for amd spec data ------------------------------------------------- Spec Routing
@@ -20,10 +22,10 @@ router
       }
       // declaring the schema based on location query
       if (req.query.location == "list") {
-        reqSchema = AmdSpecList;
+        reqSchema = amdSpecListModel;
       }
       if (req.query.location == "item") {
-        reqSchema = AmdSpecItem;
+        reqSchema = amdSpecItemModel;
       }
       let get = await reqSchema.findOne({ target: req.query.target });
       if (get == null) {
@@ -52,7 +54,7 @@ router
     let post = null;
     let response = null;
     if (req.query.location == "list") {
-      post = new AmdSpecList({
+      post = new amdSpecListModel({
         target: req.body.payload.target,
         insertId: req.body.payload.insertId,
         models: req.body.payload.models,
@@ -60,7 +62,7 @@ router
       response = "List Saved";
     }
     if (req.query.location == "item") {
-      post = new AmdSpecItem({
+      post = new amdSpecItemModel({
         target: req.body.payload.target,
         insertId: req.body.payload.insertId,
         items: req.body.payload.items,
@@ -91,7 +93,7 @@ router
     let putObj = null;
     let reqSchema = null;
     if (req.query.location == "list") {
-      reqSchema = AmdSpecList;
+      reqSchema = amdSpecListModel;
       putObj = {
         target: req.body.payload.target,
         insertId: req.body.payload.insertId,
@@ -99,7 +101,7 @@ router
       };
     }
     if (req.query.location == "item") {
-      reqSchema = AmdSpecItem;
+      reqSchema = amdSpecItemModel;
       putObj = {
         target: req.body.payload.target,
         insertId: req.body.payload.insertId,

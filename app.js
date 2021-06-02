@@ -4,8 +4,8 @@ require("dotenv").config();
 console.log(`*   Using ${process.env.NODE_ENV} Environment Variables   *`);
 const {
   AMD_DB_CONNECT: amdDatabase,
-  CORS: corsOrigin,
-  // CORS_DEV: corsOrigin,
+  // CORS: corsOrigin,
+  CORS_DEV: corsOrigin,
   PORT: port,
   HTTPS_PORT: httpsPort,
   POST_CRED: postPassword,
@@ -22,20 +22,21 @@ const mongoose = require("mongoose");
 const { amdNavVersionCheck } = require("./functions/amd/amdFunctions");
 
 // Connect to database -------------------------------------------------------------------------------
-mongoose.connect(
-  amdDatabase,
-  {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-  },
-  () => {
-    console.log("**  Connected to AmdDB  **");
-    // Version check and print for database collections
-    amdNavVersionCheck("header", true);
-    amdNavVersionCheck("sideNav", true);
-  }
-);
+// mongoose.connect(
+//   amdDatabase,
+//   {
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useUnifiedTopology: true,
+//   },
+//   () => {
+//     console.log("**  Connected to AmdDB  **");
+//     // Version check and print for database collections
+//     amdNavVersionCheck("header", true);
+//     amdNavVersionCheck("sideNav", true);
+//   }
+// );
+const { AmdMongoose } = require("./database/mongodbAmd");
 
 // Middleware ---------------------------------------------------------------------------------------
 // app.use(cors());
@@ -58,17 +59,27 @@ app.use((req, res, next) => {
 });
 
 // Import Routes
+// amd
 const amdNavRoutes = require("./routes/amd/amdNavRoutes");
 const amdContentRoutes = require("./routes/amd/amdContentRoutes");
 const amdSpecRoutes = require("./routes/amd/amdSpecRoutes");
+// portfolio
+const portfolioContactRoutes = require("./routes/portfolio/portfolioContactRoutes");
 
 // Routes --------------------------------------------------------------------------------------------
-app.use("/amd/nav", amdNavRoutes);
-app.use("/amd/content", amdContentRoutes);
-app.use("/amd/spec", amdSpecRoutes);
+
+// root
 app.get("/", (req, res) => {
   res.json({ message: `this is the root api` });
 });
+
+// amd
+app.use("/amd/nav", amdNavRoutes);
+app.use("/amd/content", amdContentRoutes);
+app.use("/amd/spec", amdSpecRoutes);
+
+// portfolio
+app.use("/portfolio/contact", portfolioContactRoutes);
 
 // Port Listeners -----------------------------------------------------------------------------------
 // setting key and cert for https connections

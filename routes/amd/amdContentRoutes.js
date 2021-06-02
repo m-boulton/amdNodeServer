@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const AmdContent = require("../../models/amd/amdContentModel");
+const { amdContentModel } = require("../../database/mongodbAmd");
 const { auth } = require("../../functions/amd/amdFunctions");
 
 // Routing for amd content data ----------------------------------------------- Content Routing
@@ -12,8 +12,14 @@ router
 
   .get(async (req, res) => {
     try {
+      if (req.query.p == null) {
+        return res.json({
+          message: "error",
+          error: "product query is empty.",
+        });
+      }
       // req.body.getById
-      const get = await AmdContent.findOne({ product: req.query.p });
+      const get = await amdContentModel.findOne({ product: req.query.p });
       res.json({
         message: "Data",
         data: get,
@@ -34,7 +40,7 @@ router
   // posts made to amd content database
 
   .post(auth, async (req, res) => {
-    const post = new AmdContent({
+    const post = new amdContentModel({
       product: req.body.payload.product,
       insertId: req.body.payload.insertId,
       content: req.body.payload.content,
@@ -62,7 +68,10 @@ router
       content: req.body.payload.content,
     };
     try {
-      await AmdContent.updateOne({ product: req.body.payload.product }, putObj);
+      await amdContentModel.updateOne(
+        { product: req.body.payload.product },
+        putObj
+      );
       // responding to the client and logging the updated
       res.json(putObj);
       console.log(`Updated Amd content ${putObj.product} on the database`);

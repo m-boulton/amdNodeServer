@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const AmdNav = require("../../models/amd/amdNavModel");
+const { amdNavModel } = require("../../database/mongodbAmd");
 const {
   amdNavVersionCheck,
   amdNavVersionUpdate,
@@ -17,7 +17,9 @@ router
   .get(async (req, res) => {
     try {
       if (typeof req.query.version == "string") {
-        const getUpdate = await AmdNav.findOne({ target: req.query.target });
+        const getUpdate = await amdNavModel.findOne({
+          target: req.query.target,
+        });
         if (getUpdate.version == req.query.version) {
           res.json({ message: "Updated" });
         } else {
@@ -28,7 +30,7 @@ router
           res.json({ message: "Data", data: getUpdate });
         }
       } else {
-        const get = await AmdNav.findOne({ target: req.query.target });
+        const get = await amdNavModel.findOne({ target: req.query.target });
         res.json({ message: "Data", data: get });
         console.log(
           `Data requested for the amdDB Nav : ${get.target} ---  `,
@@ -47,7 +49,7 @@ router
   // posts made to amd nav database
 
   .post(auth, async (req, res) => {
-    const post = new AmdNav({
+    const post = new amdNavModel({
       target: req.body.payload.target,
       insertId: req.body.payload.insertId,
       content: req.body.payload.content,
@@ -78,7 +80,7 @@ router
       version: versionUpdate,
     };
     try {
-      await AmdNav.updateOne({ target: req.body.payload.target }, putObj);
+      await amdNavModel.updateOne({ target: req.body.payload.target }, putObj);
       // responding to the client and logging the updated
       res.json(putObj);
       console.log(
