@@ -28,23 +28,6 @@ const amdSpecListModel = AmdMongoose.model(
   require("../schemas/amd/amdSpecListSchema")
 );
 
-mongoose.connection.on("connected", () => {
-  console.log("* * Connected to AMD Database * *");
-});
-
-mongoose.connection.on("disconnected", () => {
-  console.log("* * Disconnected from AMD Database * *");
-});
-
-mongoose.connection.on("error", (error) => {
-  console.log(error.message);
-});
-
-process.on("SIGINT", async () => {
-  await mongoose.connection.close();
-  process.exit(0);
-});
-
 module.exports = {
   amdContentModel,
   amdNavModel,
