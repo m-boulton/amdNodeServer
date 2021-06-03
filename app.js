@@ -4,8 +4,8 @@ require("dotenv").config();
 console.log(`*   Using ${process.env.NODE_ENV} Environment Variables   *`);
 const {
   AMD_DB_CONNECT: amdDatabase,
-  // CORS: corsOrigin,
-  CORS_DEV: corsOrigin,
+  CORS: corsOrigin,
+  // CORS_DEV: corsOrigin,
   PORT: port,
   HTTPS_PORT: httpsPort,
   POST_CRED: postPassword,
@@ -22,20 +22,7 @@ const mongoose = require("mongoose");
 const { amdNavVersionCheck } = require("./functions/amd/amdFunctions");
 
 // Connect to database -------------------------------------------------------------------------------
-// mongoose.connect(
-//   amdDatabase,
-//   {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useUnifiedTopology: true,
-//   },
-//   () => {
-//     console.log("**  Connected to AmdDB  **");
-//     // Version check and print for database collections
-//     amdNavVersionCheck("header", true);
-//     amdNavVersionCheck("sideNav", true);
-//   }
-// );
+
 const { AmdMongoose } = require("./database/mongodbAmd");
 
 // Middleware ---------------------------------------------------------------------------------------
