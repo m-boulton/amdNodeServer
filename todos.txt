@@ -1,6 +1,0 @@
-#FIXME
-add lookup for the database with getById => __id: 
-
-
-#TODO
-added target query to the db call, and update nav models
