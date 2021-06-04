@@ -5,25 +5,42 @@ const mongoose = require("mongoose");
 const { AMD_DB_CONNECT: amdDatabase } = process.env;
 
 // Connect to the AMD database -------------------------------------------------------------------------------
-const AmdMongoose = mongoose.createConnection(amdDatabase, {
+const AmdDatabaseConnection = mongoose.createConnection(amdDatabase, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
 });
 
-const amdContentModel = AmdMongoose.model(
+AmdDatabaseConnection.on("connected", () => {
+  console.log("* * Connected to AMD Database * *");
+});
+
+AmdDatabaseConnection.on("disconnected", () => {
+  console.log("* * Disconnected from AMD Database * *");
+});
+
+AmdDatabaseConnection.on("error", (error) => {
+  console.log(error.message);
+});
+
+process.on("SIGINT", async () => {
+  await AmdDatabaseConnection.close();
+  process.exit(0);
+});
+
+const amdContentModel = AmdDatabaseConnection.model(
   "AmdContent",
   require("../schemas/amd/amdContentSchema")
 );
-const amdNavModel = AmdMongoose.model(
+const amdNavModel = AmdDatabaseConnection.model(
   "AmdNav",
   require("../schemas/amd/amdNavSchema")
 );
-const amdSpecItemModel = AmdMongoose.model(
+const amdSpecItemModel = AmdDatabaseConnection.model(
   "AmdSpecItem",
   require("../schemas/amd/amdSpecItemSchema")
 );
-const amdSpecListModel = AmdMongoose.model(
+const amdSpecListModel = AmdDatabaseConnection.model(
   "AmdSpecList",
   require("../schemas/amd/amdSpecListSchema")
 );
