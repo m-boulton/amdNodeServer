@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { amdNavModel } = require("../../database/mongodbAmd");
+const { amdNavModel } = require("../database/mongodbAmd");
 const {
   amdNavVersionCheck,
   amdNavVersionUpdate,
   auth,
-} = require("../../functions/amd/amdFunctions");
+} = require("../functions/amdFunctions");
 
 // Routing for amd nav data -------------------------------------------------- Nav Routing
 

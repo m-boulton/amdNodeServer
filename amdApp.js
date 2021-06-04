@@ -37,9 +37,9 @@ app.use((req, res, next) => {
 
 // Import Routes
 // amd
-const amdNavRoutes = require("./routes/amd/amdNavRoutes");
-const amdContentRoutes = require("./routes/amd/amdContentRoutes");
-const amdSpecRoutes = require("./routes/amd/amdSpecRoutes");
+const amdNavRoutes = require("./assets/routes/amdNavRoutes");
+const amdContentRoutes = require("./assets/routes/amdContentRoutes");
+const amdSpecRoutes = require("./assets/routes/amdSpecRoutes");
 
 // Routes --------------------------------------------------------------------------------------------
 

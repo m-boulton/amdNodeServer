@@ -30,19 +30,19 @@ process.on("SIGINT", async () => {
 
 const amdContentModel = AmdDatabaseConnection.model(
   "AmdContent",
-  require("../schemas/amd/amdContentSchema")
+  require("../schemas/amdContentSchema")
 );
 const amdNavModel = AmdDatabaseConnection.model(
   "AmdNav",
-  require("../schemas/amd/amdNavSchema")
+  require("../schemas/amdNavSchema")
 );
 const amdSpecItemModel = AmdDatabaseConnection.model(
   "AmdSpecItem",
-  require("../schemas/amd/amdSpecItemSchema")
+  require("../schemas/amdSpecItemSchema")
 );
 const amdSpecListModel = AmdDatabaseConnection.model(
   "AmdSpecList",
-  require("../schemas/amd/amdSpecListSchema")
+  require("../schemas/amdSpecListSchema")
 );
 
 module.exports = {
