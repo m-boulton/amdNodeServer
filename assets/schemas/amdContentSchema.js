@@ -5,7 +5,7 @@ const reqString = {
   type: String,
   required: true,
 };
-const AmdContent = new Schema(
+const AmdContentSchema = new Schema(
   {
     product: reqString,
     insertId: reqString,
@@ -13,4 +13,4 @@ const AmdContent = new Schema(
   },
   { timestamps: true }
 );
-module.exports = AmdContent;
+module.exports = AmdContentSchema;

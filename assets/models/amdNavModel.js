@@ -1,17 +1,6 @@
-const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const AmdDatabaseConnection = require("./../database/mongodbAmd");
+const AmdNavSchema = require("./../schemas/amdNavSchema");
 
-const reqString = {
-  type: String,
-  required: true,
-};
-const AmdNav = new Schema(
-  {
-    target: reqString,
-    insertId: reqString,
-    content: Object,
-    version: Number,
-  },
-  { timestamps: true }
-);
-module.exports = mongoose.model("AmdNav", AmdNav);
+// Attaching the model with imported schema to db connection
+const AmdNavModel = AmdDatabaseConnection.model("AmdNav", AmdNavSchema);
+module.exports = AmdNavModel;

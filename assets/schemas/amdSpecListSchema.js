@@ -7,10 +7,10 @@ const reqString = {
 };
 
 // Main schema design
-const AmdSpecList = new Schema(
+const AmdSpecListSchema = new Schema(
   { target: reqString, insertId: reqString, models: Array },
   { timestamps: true }
 );
 
 // exporting schemas to the model method
-module.exports = AmdSpecList;
+module.exports = AmdSpecListSchema;

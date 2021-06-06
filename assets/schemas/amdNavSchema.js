@@ -5,7 +5,7 @@ const reqString = {
   type: String,
   required: true,
 };
-const AmdNav = new Schema(
+const AmdNavSchema = new Schema(
   {
     target: reqString,
     insertId: reqString,
@@ -14,4 +14,4 @@ const AmdNav = new Schema(
   },
   { timestamps: true }
 );
-module.exports = AmdNav;
+module.exports = AmdNavSchema;

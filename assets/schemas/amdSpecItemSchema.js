@@ -7,11 +7,11 @@ const reqString = {
 };
 
 // Main schema design
-const AmdSpecItem = new Schema(
+const AmdSpecItemSchema = new Schema(
   { target: reqString, insertId: reqString, items: Array },
   { timestamps: true }
 );
 
 // exporting schemas to the model method
 // module.exports = mongoose.model("AmdSpecItem", AmdSpecItem);
-module.exports = AmdSpecItem;
+module.exports = AmdSpecItemSchema;

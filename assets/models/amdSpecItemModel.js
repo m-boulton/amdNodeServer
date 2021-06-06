@@ -1,16 +1,9 @@
-const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const AmdDatabaseConnection = require("./../database/mongodbAmd");
+const AmdSpecItemSchema = require("./../schemas/amdSpecItemSchema");
 
-const reqString = {
-  type: String,
-  required: true,
-};
-
-// Main schema design
-const AmdSpecItem = new Schema(
-  { target: reqString, insertId: reqString, items: Array },
-  { timestamps: true }
+// Attaching the model with imported schema to db connection
+const AmdSpecItemModel = AmdDatabaseConnection.model(
+  "AmdSpecItem",
+  AmdSpecItemSchema
 );
-
-// exporting schemas to the model method
-module.exports = mongoose.model("AmdSpecItem", AmdSpecItem);
+module.exports = AmdSpecItemModel;
