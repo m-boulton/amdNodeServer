@@ -1,4 +1,4 @@
-const AmdDatabaseConnection = require("./../database/mongodbAmd");
+const AmdDatabaseConnection = require("./mongodbAmd");
 
 AmdDatabaseConnection.on("connected", () => {
   console.log("* * Connected to AMD Database * *");
@@ -16,3 +16,4 @@ process.on("SIGINT", async () => {
   await AmdDatabaseConnection.close();
   process.exit(0);
 });
+module.exports = logger;
