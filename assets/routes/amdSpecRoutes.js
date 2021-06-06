@@ -1,9 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const {
-  AmdSpecItemModel,
-  AmdSpecListModel,
-} = require("./../database/mongodbAmd");
+const AmdSpecItemModel = require("./../models/amdSpecItemModel");
+const AmdSpecListModel = require("./../models/amdSpecListModel");
 const { auth } = require("../functions/amdFunctions");
 
 // Routing for amd spec data ------------------------------------------------- Spec Routing
