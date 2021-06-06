@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { amdContentModel } = require("../database/mongodbAmd");
-const { auth } = require("../functions/amdFunctions");
+const AmdContentModel = require("./../models/amdContentModel");
+const { auth } = require("./../functions/amdFunctions");
 
 // Routing for amd content data ----------------------------------------------- Content Routing
 
@@ -19,7 +19,7 @@ router
         });
       }
       // req.body.getById
-      const get = await amdContentModel.findOne({ product: req.query.p });
+      const get = await AmdContentModel.findOne({ product: req.query.p });
       res.json({
         message: "Data",
         data: get,
@@ -40,7 +40,7 @@ router
   // posts made to amd content database
 
   .post(auth, async (req, res) => {
-    const post = new amdContentModel({
+    const post = new AmdContentModel({
       product: req.body.payload.product,
       insertId: req.body.payload.insertId,
       content: req.body.payload.content,
@@ -68,7 +68,7 @@ router
       content: req.body.payload.content,
     };
     try {
-      await amdContentModel.updateOne(
+      await AmdContentModel.updateOne(
         { product: req.body.payload.product },
         putObj
       );
