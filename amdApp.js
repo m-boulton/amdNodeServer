@@ -45,9 +45,9 @@ const amdSpecRoutes = require("./assets/routes/amdSpecRoutes");
 
 // amd
 // nginx consumes the /amd path in port transfer
-app.use("/nav", amdNavRoutes);
-app.use("/content", amdContentRoutes);
-app.use("/spec", amdSpecRoutes);
+app.use("/amd/nav", amdNavRoutes);
+app.use("/amd/content", amdContentRoutes);
+app.use("/amd/spec", amdSpecRoutes);
 
 // root
 app.get("/", (req, res) => {
