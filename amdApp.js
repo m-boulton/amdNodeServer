@@ -44,9 +44,9 @@ const amdSpecRoutes = require("./assets/routes/amdSpecRoutes");
 // Routes --------------------------------------------------------------------------------------------
 
 // amd
-app.use("/amd/nav", amdNavRoutes);
-app.use("/amd/content", amdContentRoutes);
-app.use("/amd/spec", amdSpecRoutes);
+app.use("/nav", amdNavRoutes);
+app.use("/content", amdContentRoutes);
+app.use("/spec", amdSpecRoutes);
 
 // root
 app.get("/", (req, res) => {
