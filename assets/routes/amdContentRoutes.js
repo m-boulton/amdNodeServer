@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const AmdContentModel = require("./../models/amdContentModel");
+const AmdContentModel = require("./../database/mongodbAmd");
 const { auth } = require("./../functions/amdFunctions");
 
 // Routing for amd content data ----------------------------------------------- Content Routing
