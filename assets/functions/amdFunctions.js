@@ -1,4 +1,4 @@
-const { amdNavModel } = require("../database/mongodbAmd");
+const AmdNavModel = require("./../models/amdNavModel");
 
 // Get db version and return its value
 const databaseVersionCheck = async (target, schema, log) => {
