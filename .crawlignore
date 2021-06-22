@@ -1,0 +1,14 @@
+dev
+dist
+coverage
+node_modules
+untracked
+img
+vid
+fonts
+files
+.git
+.env
+.gitignore
+.prettierignore
+package-lock.json
