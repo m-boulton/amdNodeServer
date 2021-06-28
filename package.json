@@ -1,7 +1,8 @@
 {
-  "name": "alpha",
+  "name": "amd_product_api_server",
   "version": "1.0.0",
   "description": "-\r -\r - this is yet to be filled in...",
+  "homepage": "https://api.mboulton.com/amd",
   "main": "amdApp.js",
   "scripts": {
     "start": "node amdApp.js",
@@ -9,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@mboulton.com:/srv/git/amdNodeServer.git"
+    "url": "https://github.com/m-boulton/amdNodeServer.git"
   },
   "author": "",
   "license": "ISC",
