@@ -1,6 +1,14 @@
 {
   "name": "amd_product_api_server",
   "version": "1.0.0",
+  "keywords": [
+    "1",
+    "nodejs",
+    "expressjs",
+    "mongoose",
+    "dotenv",
+    "jest"
+  ],
   "description": "-\r -\r - this is yet to be filled in...",
   "homepage": "https://api.mboulton.com/amd",
   "main": "amdApp.js",
@@ -22,6 +30,5 @@
   },
   "devDependencies": {
     "jest": "^27.0.4"
-  },
-  "keywords": []
+  }
 }
