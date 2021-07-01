@@ -66,4 +66,3 @@ app.listen(port, (err) => {
   console.log(`*** Listening on HTTP port ${port} ***`);
   console.log(`^^^ Accepting request from ${corsAddress}^^^`);
 });
-//
