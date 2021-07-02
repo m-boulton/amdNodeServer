@@ -7,6 +7,8 @@ img
 vid
 fonts
 files
+.css
+.map
 .git
 .env
 .gitignore
