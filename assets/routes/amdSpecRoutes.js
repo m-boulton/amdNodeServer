@@ -106,11 +106,11 @@ router
       };
     }
     try {
-      await reqSchema.updateOne({ target: req.query.target }, putObj);
+      await reqSchema.updateOne({ target: putObj.target }, putObj);
       res.json(
-        `Updated data to ${req.query.target} in the amd spec ${req.query.location}`
+        `Updated data to ${putObj.target} in the amd spec ${req.query.location}`
       );
-      console.log(`Updated posts to amdDB spec with ${req.query.target}`);
+      console.log(`Updated posts to amdDB spec with ${putObj.target}`);
     } catch (err) {
       res.json({
         type: "There was an error putting amd spec's",

@@ -6,8 +6,9 @@
     "nodejs",
     "expressjs",
     "mongoose",
-    "dotenv",
-    "jest"
+    "nodemailer",
+    "cronjob",
+    "dotenv"
   ],
   "description": "-\r -\r - this is yet to be filled in...",
   "homepage": "https://api.mboulton.com/amd",
