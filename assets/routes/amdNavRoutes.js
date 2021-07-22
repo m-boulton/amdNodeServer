@@ -23,19 +23,11 @@ router
         if (getUpdate.version == req.query.version) {
           res.json({ message: "Updated" });
         } else {
-          console.log(
-            `Data requested for the amdDB Nav : ${getUpdate.target} ---  `,
-            Date()
-          );
           res.json({ message: "Data", data: getUpdate });
         }
       } else {
         const get = await AmdNavModel.findOne({ target: req.query.target });
         res.json({ message: "Data", data: get });
-        console.log(
-          `Data requested for the amdDB Nav : ${get.target} ---  `,
-          Date()
-        );
       }
     } catch (err) {
       res.json({

@@ -36,7 +36,6 @@ router
         message: "Data",
         data: get,
       });
-      console.log(`Data requested for the amdDB spec -- ${get.target}`, Date());
     } catch (err) {
       res.json({
         message: "error",

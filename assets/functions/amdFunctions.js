@@ -29,12 +29,12 @@ const databaseVersionUpdate = async (target, schema, log) => {
 
 // Check Amd db version
 const amdNavVersionCheck = async (target, log) => {
-  const version = databaseVersionCheck(target, amdNavModel, log);
+  const version = databaseVersionCheck(target, AmdNavModel, log);
   return version;
 };
 // Update Amd db version
 const amdNavVersionUpdate = async (target, log) => {
-  const version = await databaseVersionUpdate(target, amdNavModel, log);
+  const version = await databaseVersionUpdate(target, AmdNavModel, log);
   return version;
 };
 

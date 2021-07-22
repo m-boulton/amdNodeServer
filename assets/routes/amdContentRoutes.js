@@ -14,23 +14,21 @@ router
     try {
       if (req.query.p == null) {
         return res.json({
-          message: "error",
+          message: "ERROR",
           error: "product query is empty.",
         });
       }
       // req.body.getById
       const get = await AmdContentModel.findOne({ product: req.query.p });
+      if (get === null)
+        throw `Database item check has failed for ${req.query.p}`;
       res.json({
-        message: "Data",
+        message: "DATA",
         data: get,
       });
-      console.log(
-        `Data requested for the amdDB content -- ${get.product}`,
-        Date()
-      );
     } catch (err) {
       res.json({
-        message: "error",
+        message: "ERROR",
         error: `There was an error getting amdDB content ${req.query.p}`,
         errorData: err,
       });

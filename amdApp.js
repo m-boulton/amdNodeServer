@@ -21,10 +21,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "1mb" }));
 app.use((req, res, next) => {
-  // #FIXME--------------------------------------------------------------
-  // replace cors address header to corsAddress when pushed to production
-
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", corsAddress);
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
@@ -39,10 +36,10 @@ app.use((req, res, next) => {
 });
 
 // Import Routes
-// amd
 const amdNavRoutes = require("./assets/routes/amdNavRoutes");
 const amdContentRoutes = require("./assets/routes/amdContentRoutes");
 const amdSpecRoutes = require("./assets/routes/amdSpecRoutes");
+const amdContactRoutes = require("./assets/routes/amdContactRoutes");
 
 // Routes --------------------------------------------------------------------------------------------
 
@@ -51,6 +48,7 @@ const amdSpecRoutes = require("./assets/routes/amdSpecRoutes");
 app.use("/amd/nav", amdNavRoutes);
 app.use("/amd/content", amdContentRoutes);
 app.use("/amd/spec", amdSpecRoutes);
+app.use("/amd/contact", amdContactRoutes);
 
 // root
 app.get("/", (req, res) => {
