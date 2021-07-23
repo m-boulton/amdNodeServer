@@ -56,7 +56,7 @@ router
         insertId: req.body.payload.insertId,
         models: req.body.payload.models,
       });
-      response = "List Saved";
+      response = `List Saved : ${post.target}`;
     }
     if (req.query.location == "item") {
       post = new AmdSpecItemModel({
@@ -64,7 +64,7 @@ router
         insertId: req.body.payload.insertId,
         items: req.body.payload.items,
       });
-      response = "Item Saved";
+      response = `Item Saved : ${post.target}`;
     }
     if (req.query.location == null) {
       response = "Location query not Declared";
