@@ -7,7 +7,6 @@
     "expressjs",
     "mongoose",
     "nodemailer",
-    "cronjob",
     "dotenv"
   ],
   "description": "-\r -\r - this is yet to be filled in...",
@@ -15,7 +14,8 @@
   "main": "amdApp.js",
   "scripts": {
     "start": "node amdApp.js",
-    "test": "jest"
+    "nodemon": "nodemon amdApp.js",
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",

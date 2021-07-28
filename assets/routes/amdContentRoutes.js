@@ -41,6 +41,7 @@ router
     const post = new AmdContentModel({
       product: req.body.payload.product,
       insertId: req.body.payload.insertId,
+      background: req.body.payload.background,
       content: req.body.payload.content,
     });
     try {
@@ -63,6 +64,7 @@ router
     const putObj = {
       product: req.body.payload.product,
       insertId: req.body.payload.insertId,
+      background: req.body.payload.background,
       content: req.body.payload.content,
     };
     try {

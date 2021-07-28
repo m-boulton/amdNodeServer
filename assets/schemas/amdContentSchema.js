@@ -9,6 +9,7 @@ const AmdContentSchema = new Schema(
   {
     product: reqString,
     insertId: reqString,
+    background: String,
     content: Object,
   },
   { timestamps: true }
