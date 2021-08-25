@@ -7,7 +7,8 @@ const { AMD_DB_CONNECT: amdDatabase } = process.env;
 // Connect to the AMD database -------------------------------------------------------------------------------
 const AmdDatabaseConnection = mongoose.createConnection(amdDatabase, {
   useNewUrlParser: true,
-  useCreateIndex: true,
+  // deprecated for mongoose 6.0
+  // useCreateIndex: true,
   useUnifiedTopology: true,
 });
 
